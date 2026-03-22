@@ -1,0 +1,28 @@
+{
+    "title": "About",
+    "paragraphs": [
+        "The ultimate entrepreneurial hub in the Sahel region. Young actor and energy catalyst who aims to be an intermediary between young talents and the job market. Our structure is based on two key principles: pooling and collaboration.",
+        "The idea is simple, bring together young startups, supervise them, support them throughout their development. Our vocation is to encourage meetings, exchanges and collaboration in order to detect synergies conducive to the emergence of projects.",
+        "We provide our co-workers with the necessary means to design and carry out their projects: high-speed internet access, multi-format printing equipment, meeting rooms, green zones, modular open-space, collaborative kitchen, conference room and seminars."
+    ],
+    "socialLinks": [
+        {
+            "name": "Facebook",
+            "url": "https://www.facebook.com/Chifaatn",
+            "icon": "fab fa-facebook-f",
+            "class": "facebook"
+        },
+        {
+            "name": "Instagram",
+            "url": "https://www.instagram.com/Chifaatn",
+            "icon": "fab fa-instagram",
+            "class": "instagram"
+        },
+        {
+            "name": "LinkedIn",
+            "url": "https://www.linkedin.com/company/Chifaa",
+            "icon": "fab fa-linkedin-in",
+            "class": "linkedin"
+        }
+    ]
+}

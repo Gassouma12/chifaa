@@ -1,0 +1,178 @@
+/* --- DARK MODE THEME OVERRIDES --- */
+
+body.dark-mode {
+    background-color: #121212;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+/* --- Header --- */
+body.dark-mode .site-header.is-scrolling {
+    background-color: rgba(18, 18, 18, 0.65);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .primary-nav {
+    background: #1E1E1E;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .nav-list a {
+    color: rgba(255, 255, 255, 0.87);
+}
+
+body.dark-mode .nav-list a::after {
+    background-color: rgba(255, 255, 255, 0.87);
+}
+
+body.dark-mode .hamburger-line {
+    background-color: rgba(255, 255, 255, 0.87);
+}
+
+body.dark-mode .contact-pill {
+    background-color: #FDDD3C;
+    /* Hive Yellow */
+    color: #121212;
+}
+
+body.dark-mode .contact-pill:hover {
+    background-color: #FDDD3C;
+}
+
+/* --- General Typography & Links --- */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #FFFFFF;
+}
+
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode div {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode a {
+    color: #59C3C2;
+}
+
+body.dark-mode a:hover {
+    color: #4AB3B2;
+}
+
+
+/* About Page */
+body.dark-mode .social-pill {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.87);
+}
+
+/* Services Page */
+body.dark-mode .service-card h2,
+body.dark-mode .service-card .plus-glyph {
+    color: #121212;
+    /* Keep text dark on light-colored cards */
+}
+
+body.dark-mode .service-card .microcopy {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Experts & Team Pages */
+body.dark-mode .expert-card,
+body.dark-mode .team-card {
+    color: #121212;
+}
+
+body.dark-mode .expert-card h2,
+body.dark-mode .team-card h2,
+body.dark-mode .expert-card .plus-glyph,
+body.dark-mode .team-card .plus-glyph {
+    color: #121212;
+}
+
+body.dark-mode .expert-role,
+body.dark-mode .expert-org,
+body.dark-mode .team-role,
+body.dark-mode .team-org,
+body.dark-mode .expert-card .microcopy,
+body.dark-mode .team-card .microcopy {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .expert-linkedin-icon {
+    background: rgba(0, 0, 0, 0.2);
+    color: #121212;
+}
+
+body.dark-mode .expert-linkedin-icon:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Founders Page */
+body.dark-mode .founder-card {
+    color: #121212;
+}
+
+body.dark-mode .founder-card h2,
+body.dark-mode .founder-card .plus-glyph {
+    color: #121212;
+}
+
+body.dark-mode .founder-role,
+body.dark-mode .founder-org,
+body.dark-mode .founder-card .microcopy {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Startups & Partners Page */
+body.dark-mode .startup-tile,
+body.dark-mode .partner-tile {
+    /* The logos are mostly white, so they stand out on the dark tiles already */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gallery Page */
+body.dark-mode .gallery-tile {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Contact Page */
+body.dark-mode .contact-tile {
+    color: #121212;
+}
+
+body.dark-mode .contact-tile p,
+body.dark-mode .contact-tile span,
+body.dark-mode .contact-tile div,
+body.dark-mode .contact-tile a,
+body.dark-mode .contact-tile h3 {
+    color: #121212 !important;
+}
+
+body.dark-mode .contact-tile a:hover {
+    color: #121212 !important;
+}
+
+body.dark-mode .tile-address .star {
+    color: #FEB300 !important;
+}
+
+body.dark-mode .contact-tile.tile-map {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+body.dark-mode .load-more,
+body.dark-mode .reviews-btn {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.87);
+}
+
+/* Footer */
+body.dark-mode footer p {
+    color: rgba(255, 255, 255, 0.5);
+}

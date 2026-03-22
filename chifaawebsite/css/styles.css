@@ -1,0 +1,967 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+
+:root {
+  --color-primary: #E8A0B0;
+  --color-accent: #C4687E;
+  --color-bg-main: #F5EFE6;
+  --color-healing: #7BBCB0;
+  --color-surface: #FDFAF7;
+  --color-text-body: #2C2420;
+
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', 'Nunito', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-body);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+}
+
+.btn-primary,
+button,
+.cta {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@font-face {
+  font-family: 'Daveau';
+  src: url('../assets/fonts/Daveau.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Prevent image dragging */
+img {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Typography */
+li,
+a,
+button {
+  font-weight: 500;
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+}
+
+
+
+.button-wrapper {
+  margin-left: auto;
+}
+
+/* Buttons */
+button {
+  padding: 12px 40px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-weight: lighter;
+  border: 2px solid black;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-weight: 700;
+}
+
+button:hover {
+  background-color: #f6cc08;
+  color: black;
+  border-color: #f6cc08;
+  font-weight: 700;
+}
+
+/* Containers */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5vw;
+  align-items: center;
+  /* break-inside: avoid; */
+  height: 45%;
+  width: 85%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width : 980px) {
+  .container {
+    width: 95%;
+    margin-right: 2%;
+  }
+}
+
+/* Boxes */
+.box1,
+.box5 {
+  border-radius: 20px;
+  position: relative;
+  width: 19%;
+  min-width: 100px;
+  height: 350px;
+  top: -2vh;
+  font-size: 12px;
+}
+
+.box1,
+.box5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.box1a {
+  border-radius: 20px;
+  position: relative;
+  width: 90%;
+  left: 25%;
+  height: calc(50% - 30px);
+  top: -15%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-bottom: 0px;
+}
+
+
+.boxa1 p {
+  font-size: 2vw;
+  margin-bottom: 20vw;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Apply the animation to the elements inside .box1a when hovered */
+.box1:hover #meet,
+.box1:hover #team {
+  filter: invert(78%) sepia(31%) saturate(7385%) hue-rotate(331deg) brightness(102%) contrast(99%);
+  animation: shake 0.5s ease-in-out 0.2s 2;
+  /* Adjust animation duration and timing as needed */
+}
+
+.box1:hover .box1b {
+  background-color: #fe8541;
+}
+
+
+.box1a a {
+  display: block;
+  /* Make the link a block to contain the image */
+  line-height: 0;
+  /* Remove any extra line height */
+}
+
+#meet-the-team-img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  /* Add bottom margin */
+  transition: filter 0.3s ease;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.box1a a:hover #meet-the-team-img {
+  /* Orange color filter: sepia, saturate, hue-rotate, brightness, contrast */
+  filter: sepia(1) saturate(5) hue-rotate(-45deg) brightness(1.1) contrast(1.1);
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+.box1b {
+  border-radius: 20px;
+  position: relative;
+  width: 90%;
+  left: 25%;
+  top: -15%;
+  aspect-ratio: 240/165;
+  background-color: #cae777;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.box1b img {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  height: auto;
+}
+
+.box1b #glasses {
+  transform: rotate(-20deg);
+  position: absolute;
+  max-width: 27%;
+  top: 3vh;
+  left: 20%;
+}
+
+/* Add animation for sliding down the glasses element */
+@keyframes slideDown {
+  0% {
+    transform: rotate(-20deg);
+    top: 3vh;
+    left: 20%;
+  }
+
+  /* Start from the middle */
+
+  100% {
+    transform: rotate(-20deg);
+    top: 3.5vh;
+    left: 28%;
+  }
+
+  /* Slide down by 1vh */
+}
+
+/* Apply the animation to the glasses element */
+.box1:hover #glasses {
+  animation: slideDown 0.3s ease-in-out forwards;
+  /* Animation duration and timing */
+}
+
+
+
+.centered-image {
+  margin-top: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 280px;
+  transform: translate(-50%, -50%);
+  /* Center the image horizontally and vertically */
+  z-index: 9999;
+  width: 25%;
+  /* Set a fixed width for the image */
+  aspect-ratio: 364/134;
+  max-width: 100%;
+  /* Ensure the image does not exceed its container's width */
+}
+
+@media screen and (max-width : 700px) {
+  .centered-image {
+    min-width: 240px;
+  }
+}
+
+@media screen and (max-width : 570px) {
+  .centered-image {
+    min-width: 200px;
+  }
+}
+
+
+.top {
+  width: 100%;
+  position: relative;
+
+
+}
+
+.top p {
+  position: absolute;
+  top: 43%;
+  left: 14.8%;
+  font-size: 0.7vw;
+  font-weight: 700;
+}
+
+.image-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+}
+
+.image-container img {
+  position: absolute;
+  bottom: 0;
+
+}
+
+.top-image {
+  /* Adjust the size and positioning of the top image as needed */
+  width: 50%;
+  height: auto;
+  z-index: 1;
+  /* Ensure the top image is above the bottom image */
+}
+
+.box1 p {
+  font-family: 'Poppins', sans-serif;
+}
+
+.box3 {
+  border-radius: 20px;
+  position: relative;
+  aspect-ratio: 245/450;
+  width: 14%;
+  background-color: #f6cc08;
+}
+
+
+
+.box5 {
+  width: 19%;
+}
+
+.box5b {
+  border-radius: 20px;
+  position: relative;
+  width: 90%;
+  left: 0;
+  top: 2vh;
+  aspect-ratio: 240/165;
+  background-color: #dea4fc;
+  /* Add background color */
+  margin-bottom: 10px;
+}
+
+
+
+.box5b .box5img {
+  position: absolute;
+  transform: translate(15%, -23%);
+  max-width: 110%;
+}
+
+
+
+
+/* Box2 */
+.box2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  position: relative;
+  width: 18%;
+  height: 45vh;
+}
+
+/* Box4 */
+.box4 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  position: relative;
+  width: 18%;
+  height: 45vh;
+}
+
+.box4 .box4a,
+
+
+.box4 .box4a img,
+.box4 .box4b img {
+  max-width: 100%;
+  /* Ensure image does not exceed container width */
+  max-height: 100%;
+  /* Ensure image does not exceed container height */
+  border-radius: 20px;
+  /* Apply border radius to image */
+}
+
+.box4 .box4a {
+  background-color: #74ae8a;
+}
+
+
+
+/* Icon */
+.box2 .box2text, .box4 .box4text {
+  border-radius: 20px;
+  position: relative;
+  width: 90%;
+  aspect-ratio: 240/165;
+  display: flex;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+@keyframes oscillate {
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+.box2 .box2text img, .box4 .box4text img {
+  max-width: 70%;
+  max-height: 70%;
+  transition: transform 0.3s ease;
+  animation: oscillate 2s ease-in-out infinite;
+}
+
+.box2 .box2text img:hover, .box4 .box4text img:hover {
+  transform: scale(1.1);
+  /* Keep the zoom effect */
+}
+
+.box2 .box2b, .box4 .box4b {
+  border-radius: 20px;
+  position: relative;
+  width: 90%;
+  left: 0;
+  aspect-ratio: 265/200;
+  background-color: #1d9edb;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  overflow: hidden;
+  /* Prevent image overflow on zoom */
+}
+
+.box2b, .box4b {
+  /* Existing styles */
+  position: relative;
+  /* Ensure the positioning works correctly */
+}
+
+/* Positioning for the icon and images */
+.box2b img, .box4b img {
+  position: absolute;
+  right: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Positioning for the images */
+.box2b img:nth-child, .box4b img:nth-child(1) {
+  top: 10px;
+  max-width: 18%;
+
+  filter: invert(99%) sepia(96%) saturate(16%) hue-rotate(225deg) brightness(103%) contrast(100%);
+}
+
+.box2b img:nth-child, .box4b img:nth-child(2) {
+  top: 50%;
+  transform: translateY(-30%);
+  max-width: 35%;
+}
+
+.box2b img:nth-child, .box4b img:nth-child(3) {
+  bottom: 0px;
+  transform: translateY(75%);
+  max-width: 80%;
+}
+
+/* Individual styling for each image in box2b */
+.first-image {
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  /* Add transition for smooth animation */
+  transition: filter 0.3s ease;
+  filter: invert(99%) sepia(96%) saturate(16%) hue-rotate(225deg) brightness(103%) contrast(100%);
+}
+
+.second-image {
+  top: 50%;
+  right: 10px;
+  z-index: 10;
+  transform: translateY(-30%);
+  max-width: 25%;
+  /* Add transition for smooth animation */
+  transition: filter 0.3s ease;
+  filter: invert(99%) sepia(96%) saturate(16%) hue-rotate(225deg) brightness(103%) contrast(100%);
+}
+
+
+
+.new-image {
+  /* Position the image in the bottom-left corner */
+  position: absolute;
+  bottom: 0;
+  left: -3%;
+  /* Adjust z-index as needed */
+  z-index: 1;
+  /* Set max-width for responsiveness */
+  max-width: 70%;
+  /* Add border-radius for rounded corners */
+  /* Add transition for smooth animation */
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: 20px;
+}
+
+/* Make new-image cover the background in box2b specifically */
+.box2b .new-image, .box4b .new-image {
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+#member1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  /* Adjust z-index as needed */
+  z-index: 1;
+  /* Set max-width for responsiveness */
+  max-width: 80%;
+  /* Add border-radius for rounded corners */
+  border-radius: 18px;
+  /* Add transition for smooth animation */
+  transition: transform 0.3s ease, filter 0.3s ease;
+
+}
+
+
+.box1:hover .box1b img:nth-child(1) {
+  transform: scale(1.1) translateX(4.5%) translateY(-4.5%);
+}
+
+
+
+
+/* Rotate the icon when box2b is hovered */
+.box2b:hover, .box4b:hover img:nth-child(1) {
+  transform: rotate(45deg);
+  /* Add transition for smooth animation */
+}
+
+.box2b:hover, .box4b:hover img:nth-child(4) {
+  transform: translateY(-7%);
+}
+
+
+.middlepic {
+  position: absolute;
+  bottom: 0;
+  /* Adjust z-index as needed */
+  z-index: 1;
+  /* Set max-width for responsiveness */
+  max-width: 100%;
+  /* Add border-radius for rounded corners */
+  /* Add transition for smooth animation */
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: 20px;
+
+}
+
+
+.box4b {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+
+
+.box4bpic {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  /* Adjust z-index as needed */
+  z-index: 1;
+  /* Set max-width for responsiveness */
+  max-width: 59%;
+  /* Add border-radius for rounded corners */
+  /* Add transition for smooth animation */
+  border-radius: 20px;
+
+}
+
+
+
+
+.flip-animation {
+  transform: scaleX(-1);
+  /* Flip horizontally */
+}
+
+
+
+
+
+.plus-image {
+  position: absolute;
+  bottom: 1.5vh;
+  left: 1vw;
+  max-width: 18%;
+  height: auto;
+  z-index: 2;
+  filter: invert(99%) sepia(96%) saturate(16%) hue-rotate(225deg) brightness(103%) contrast(100%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  transform: rotate(45deg);
+}
+
+
+.box4a img {
+  max-width: 100%;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 24px;
+  max-width: 1240px;
+  margin: 40px auto 0;
+}
+
+footer p {
+  font-size: 12px;
+  color: #5D5257;
+  margin: 8px 0;
+}
+
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.footer-credit a {
+  display: inline-flex;
+  align-items: center;
+  color: #5D5257;
+  transition: color 0.3s ease;
+  vertical-align: middle;
+}
+
+.footer-credit a:hover {
+  color: #FEB300;
+}
+
+.footer-credit svg {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+@media screen and (max-width : 570px) {
+
+  .container .box3,
+  .container .box1,
+  .container .box2,
+  .container .box4,
+  .container .box5 {
+    width: 80%;
+    margin: 0;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .box2 .box .box1a,
+  .box1b,
+  .box2a,
+  .box2b,
+  .box4a,
+  .box4b,
+  .box4,
+  .box4 .box4a,
+  .box4 .box4b,
+  .box5b,
+  .box5,
+  .box2 .box2text,
+  .box2 .box2text,
+  .box2 .box2text,
+  .box2 .box4b,
+  .box1a {
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer.microcopy {
+    position: relative;
+    right: -20%;
+    font-size: 11px;
+  }
+}
+
+/* === MOBILE STYLES (Replaces mobile-stack) === */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* Reduced gap */
+    padding: 0 24px 24px;
+  }
+
+  /* Make all direct children of the container full-width */
+  .container>* {
+    width: 100%;
+    max-width: 60%;
+    /* Adjust max-width */
+    height: auto;
+    /* Ensure proportional height */
+  }
+
+  /* Restore box styles that were in the stack */
+  .top,
+  .box1a,
+  .box1b,
+  .box2b,
+  .box3,
+  .box4a,
+  .box4b,
+  .box5b {
+    position: relative;
+    width: 100%;
+    border-radius: 28px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .top {
+    box-shadow: none;
+    /* Slogan doesn't need a shadow */
+    display: flex;
+    justify-content: center;
+  }
+
+  .top .centered-image,
+  .box4a .new-image,
+  .box4b .box4bpic {
+    position: static !important;
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: none;
+    margin-top: 30px;
+    margin-bottom: 24px;
+    /* Add bottom margin */
+    z-index: 2;
+    /* Lower z-index for mobile */
+  }
+
+  .box2b {
+    aspect-ratio: 4 / 3;
+    background-color: #1d9edb;
+    margin-bottom: 24px;
+    /* Add bottom margin */
+  }
+
+  .box4a {
+    background-color: #74ae8a;
+  }
+
+  .box4b {
+    background-color: #e7d2a5;
+    margin-bottom: 24px;
+    /* Add bottom margin */
+  }
+
+  .box1a {
+    overflow: visible;
+    border-radius: 0;
+    box-shadow: none;
+    /* Also remove shadow to prevent odd visual effects */
+  }
+
+  .box5b {
+    top: auto;
+    margin-bottom: 20px;
+  }
+
+  .box3 {
+    border-radius: 20px;
+    position: relative;
+    aspect-ratio: 245/450;
+    width: 14%;
+    background-color: #f6cc08;
+  }
+
+  .footer.microcopy {
+    text-align: center;
+  }
+
+  .top {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* --- Specific Mobile Overrides --- */
+  .box5b {
+    overflow: visible;
+  }
+
+  .top .centered-image {
+    width: 80%;
+  }
+
+  .play-button-container {
+    display: grid;
+    /* Use Grid for robust centering */
+    place-items: center;
+    /* Center horizontally and vertically */
+    margin-bottom: 40px;
+    box-shadow: none;
+    border-radius: 28px;
+    background-color: transparent;
+    aspect-ratio: 1 / 1;
+    /* Make container square */
+  }
+
+  .play-button-container img {
+    max-width: 100px;
+    /* Set image size to 100px */
+  }
+
+  /* Hide specific boxes on mobile */
+  .box-link,
+  /* This is the wrapper for box1 */
+  .box1,
+  .box2,
+  .box4,
+  .box5 {
+    display: none;
+  }
+
+  .box4a,
+  .box4b {
+    aspect-ratio: 240 / 165;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .top-title-box h1 {
+    font-size: 2.2rem;
+  }
+
+  .typewriter-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.top-title-box {
+  width: 95%;
+  margin: 50px auto 40px auto;
+  background-color: transparent;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-title-box .title-container {
+  text-align: center;
+}
+
+.top-title-box h1 {
+  font-size: 4rem;
+  color: black;
+  font-family: Georgia, serif;
+  margin: 0 0 10px 0;
+}
+
+.typewriter-subtitle {
+  font-size: 2.2rem;
+  color: var(--color-accent);
+  min-height: 2.5rem;
+  margin: 0;
+  font-family: "Playball", cursive;
+  font-weight: 400;
+  font-style: normal;
+  transition: opacity 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+  .top-title-box h1 {
+    font-size: 2.2rem !important;
+  }
+
+  .typewriter-subtitle {
+    font-size: 1.5rem !important;
+  }
+}

@@ -1,0 +1,298 @@
+/* --- FONT & GLOBAL STYLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;900&display=swap');
+
+body {
+    background-color: #FFFFFF;
+    font-family: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+    color: #060507;
+}
+
+*:focus-visible {
+    outline: 2px solid rgba(6, 5, 7, 0.35);
+    outline-offset: 2px;
+}
+
+/* --- LAYOUT CONTAINER --- */
+.page-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    /* Mobile padding */
+}
+
+/* --- PAGE TITLE --- */
+h1 {
+    text-align: center;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #060507;
+    margin-top: 40px;
+    margin-bottom: 56px;
+}
+
+/* --- CONTACT GRID --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Mobile */
+    gap: 10px;
+    /* Reduced gap */
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.contact-tile {
+    aspect-ratio: 1 / 1;
+    /* Make cards square */
+    padding: 16px;
+    /* Reduced padding */
+    border-radius: 28px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 14px;
+    /* Slightly smaller font */
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-tile:not(.tile-map):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
+}
+
+/* --- TILE BACKGROUNDS --- */
+.tile-address {
+    position: relative;
+    overflow: hidden;
+    padding: 24px 50px !important;
+}
+
+.tile-address .review-content {
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 100px);
+    pointer-events: none;
+}
+
+.tile-address .review-content.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.tile-address .review-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tile-address .review-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.tile-address .review-stars {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.tile-address .star {
+    font-size: 30px;
+    line-height: 1;
+    color: #FEB300;
+}
+
+.tile-address .review-text {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.tile-address .review-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.tile-address .review-nav:hover {
+    transform: translateY(-50%) scale(1.2);
+    color: #000000;
+}
+
+.tile-address .review-nav.prev {
+    left: 0;
+}
+
+.tile-address .review-nav.next {
+    right: 0;
+}
+
+.tile-hours {
+    background-color: #FDDD3C;
+}
+
+.tile-address {
+    background-color: #CBDF92;
+}
+
+.tile-comms {
+    background-color: #D49FD3;
+}
+
+/* Special override for the map tile to remove padding and flex properties */
+.contact-tile.tile-map {
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    /* Reset display from flex */
+}
+
+/* --- TILE CONTENT --- */
+.hours-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 16px;
+}
+
+.hours-grid span:nth-child(odd) {
+    font-weight: 600;
+}
+
+.tabular-nums {
+    font-feature-settings: 'tnum';
+    text-align: right;
+}
+
+.tile-comms {
+    text-align: center;
+}
+
+.tile-comms .contact-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tile-comms .contact-group:last-child {
+    margin-bottom: 0;
+}
+
+.tile-comms .contact-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.tile-comms a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.tile-comms a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* --- FOOTER --- */
+footer {
+    text-align: left;
+    padding: 24px;
+    max-width: 1240px;
+    margin: 40px auto 0;
+}
+
+footer p {
+    font-size: 12px;
+    color: #5D5257;
+}
+
+/* --- TABLET STYLES --- */
+@media (min-width: 768px) {
+    .page-container {
+        padding: 0 40px;
+    }
+
+    h1 {
+        font-size: 56px;
+        margin-bottom: 40px;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        /* Reduced gap */
+    }
+
+    .contact-tile {
+        padding: 20px;
+        /* Reduced padding */
+        font-size: 15px;
+        /* Slightly smaller font */
+    }
+
+    footer {
+        padding: 24px 40px;
+    }
+}
+
+/* --- DESKTOP STYLES --- */
+@media (min-width: 1024px) {
+    .page-container {
+        padding: 0 64px;
+    }
+
+    h1 {
+        font-size: 72px;
+        margin-bottom: 56px;
+    }
+
+    .contact-grid {
+        gap: 10px;
+        /* Reduced gap */
+        max-width: 40vw;
+        /* Constrain grid width */
+        margin: 0 auto;
+        /* Center the grid */
+    }
+
+    .contact-tile {
+        min-width: auto;
+        /* Allow tiles to shrink */
+    }
+
+    footer {
+        padding: 24px 64px;
+    }
+}

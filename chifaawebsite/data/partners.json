@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "name": "Spark",
+        "logoUrl": "assets/partners/spark.svg",
+        "fallbackText": "spark",
+        "tileClass": "tile-spark",
+        "description": "",
+        "logo": "../assets/images/partners/img_696425bddc5b77.18408081.jpg",
+        "website": "https://impactpartner.co/",
+        "backgroundColor": "#000000"
+    },
+    {
+        "id": 3,
+        "name": "TEDx",
+        "logoUrl": "assets/partners/tedx.svg",
+        "fallbackText": "TEDx",
+        "tileClass": "tile-tedx",
+        "description": "",
+        "logo": "../assets/images/partners/img_69642ba5735393.67334748.jpg",
+        "website": "",
+        "backgroundColor": "#000000"
+    },
+    {
+        "id": 4,
+        "name": "AWS",
+        "logoUrl": "assets/partners/aws.svg",
+        "fallbackText": "AWS",
+        "tileClass": "tile-aws",
+        "description": "",
+        "logo": "../assets/images/partners/img_69642c9d3eccb8.67114808.jpg",
+        "website": "",
+        "backgroundColor": "#000000"
+    },
+    {
+        "id": 5,
+        "name": "giz",
+        "logoUrl": "assets/partners/giz.svg",
+        "fallbackText": "giz",
+        "tileClass": "tile-giz",
+        "description": "",
+        "logo": "../assets/images/partners/img_69642bcfcb2c26.28723683.jpg",
+        "website": "",
+        "backgroundColor": "#000000"
+    },
+    {
+        "id": 6,
+        "name": "Impact Partner",
+        "logoUrl": "assets/partners/impact-partner.svg",
+        "fallbackText": "Impact Partner",
+        "tileClass": "tile-impact",
+        "description": "",
+        "logo": "../assets/images/partners/img_69642dfed9dde2.85411990.jpg",
+        "website": "https://impactpartner.co/",
+        "backgroundColor": "#000000"
+    }
+]

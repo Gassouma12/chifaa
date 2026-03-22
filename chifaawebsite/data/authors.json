@@ -1,0 +1,43 @@
+[
+    {
+        "id": 1,
+        "name": "Sarah Anderson",
+        "username": "sarah.anderson",
+        "password": "demo123",
+        "role": "CEO & Co-founder",
+        "image": "../assets/images/member1.png",
+        "bio": "Passionate about fostering innovation and supporting startups in the Sahel region.",
+        "socials": {
+            "facebook": "https://facebook.com/sarahanderson",
+            "instagram": "https://instagram.com/sarahanderson",
+            "linkedin": "https://linkedin.com/in/sarahanderson"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Michael Chen",
+        "username": "michael.chen",
+        "password": "demo123",
+        "role": "Content Manager",
+        "image": "../assets/images/member2.png",
+        "bio": "Tech enthusiast and storyteller helping startups share their journey.",
+        "socials": {
+            "linkedin": "https://linkedin.com/in/michaelchen",
+            "instagram": "https://instagram.com/michaelchen"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Eya Rziga",
+        "username": "eyarziga@gmail.com",
+        "password": "eyaeyaeya",
+        "role": "Chief Content Officer",
+        "image": "../assets/images/authors/img_69641e068d67f2.59496698.jpg",
+        "bio": "Curious mind, writer",
+        "socials": {
+            "facebook": "https://www.facebook.com/eya.rziga",
+            "instagram": "https://www.facebook.com/eya.rziga",
+            "linkedin": "https://www.facebook.com/"
+        }
+    }
+]

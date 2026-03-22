@@ -1,0 +1,181 @@
+[
+    {
+        "id": 1,
+        "title": "Building a Thriving Startup Ecosystem in the Sahel Region",
+        "slug": "startup-ecosystem-sahel",
+        "author": "Eya Rziga",
+        "authorRole": "CEO @ Chifaa",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "../assets/images/articles/1/img_6963e2c4ac7710.99075899.jpg",
+        "excerpt": "Discover how Chifaa is fostering innovation and entrepreneurship in Tunisia, creating opportunities for the next generation of founders.",
+        "content": "<h1>First Title</h1><p>The Sahel region has immense potential for innovation and entrepreneurship. At <a href=\"https://www.youtube.com/\" target=\"_blank\">Chifaa</a>, we're committed to creating an environment where startups can thrive.</p>",
+        "category": [
+            "Entrepreneurship",
+            "Startups"
+        ],
+        "tags": [
+            "Startups",
+            "Innovation",
+            "Sahel",
+            "Entrepreneurship"
+        ],
+        "readTime": 5,
+        "publishedDate": "2025-12-15",
+        "featured": true,
+        "views": 1250
+    },
+    {
+        "id": 2,
+        "title": "From Idea to Launch: A Founder's Journey with Funnycation",
+        "slug": "funnycation-founder-journey",
+        "author": "Mohamed B. Hammouda",
+        "authorRole": "CEO @ Funnycation",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "https://placehold.co/800x450/D49FD3/060507?text=Founder+Journey",
+        "excerpt": "Mohamed shares his experience of building an ed-tech startup from the ground up, including challenges faced and lessons learned along the way.",
+        "content": "Starting Funnycation was both exhilarating and terrifying. Here's what I learned about turning an educational vision into reality...",
+        "category": "Founder Stories",
+        "tags": [
+            "Founders",
+            "Ed-Tech",
+            "Startup Journey",
+            "Lessons Learned"
+        ],
+        "readTime": 8,
+        "publishedDate": "2025-12-10",
+        "featured": true,
+        "views": 892
+    },
+    {
+        "id": 3,
+        "title": "The Power of Community: How Coworking Spaces Drive Innovation",
+        "slug": "coworking-spaces-innovation",
+        "author": "Marouen Nouira",
+        "authorRole": "Community Manager @ Chifaa",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "https://placehold.co/800x450/81D8F8/060507?text=Coworking+Innovation",
+        "excerpt": "Explore how collaborative workspaces create synergies between entrepreneurs, leading to unexpected partnerships and groundbreaking ideas.",
+        "content": "In today's connected world, the right environment can make all the difference. Here's why coworking spaces are more than just desks...",
+        "category": "Coworking",
+        "tags": [
+            "Coworking",
+            "Community",
+            "Collaboration",
+            "Innovation"
+        ],
+        "readTime": 6,
+        "publishedDate": "2025-12-08",
+        "featured": false,
+        "views": 745
+    },
+    {
+        "id": 4,
+        "title": "5 Essential Digital Marketing Strategies for Tunisian Startups",
+        "slug": "digital-marketing-strategies-tunisia",
+        "author": "Chiheb E. Fatnassi",
+        "authorRole": "CCO @ Pixelup",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "https://placehold.co/800x450/8DB0A1/060507?text=Digital+Marketing",
+        "excerpt": "Learn the most effective digital marketing tactics that local startups can implement on a limited budget to reach their target audience.",
+        "content": "Digital marketing doesn't have to break the bank. Here are five proven strategies that work for Tunisian startups...",
+        "category": "Marketing",
+        "tags": [
+            "Marketing",
+            "Digital Strategy",
+            "Growth",
+            "Social Media"
+        ],
+        "readTime": 7,
+        "publishedDate": "2025-12-05",
+        "featured": false,
+        "views": 1100
+    },
+    {
+        "id": 5,
+        "title": "Fundraising 101: Securing Your First Investment Round",
+        "slug": "fundraising-first-investment",
+        "author": "Slaheddine Dardouri",
+        "authorRole": "Startups Advisor @ Swisscontact",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "https://placehold.co/800x450/CBDF92/060507?text=Fundraising+Guide",
+        "excerpt": "A comprehensive guide to preparing your startup for investor meetings, crafting the perfect pitch, and closing your seed round.",
+        "content": "Fundraising can be daunting for first-time founders. Here's everything you need to know about securing your initial investment...",
+        "category": "Funding",
+        "tags": [
+            "Fundraising",
+            "Investment",
+            "Pitch Deck",
+            "Investors"
+        ],
+        "readTime": 10,
+        "publishedDate": "2025-12-01",
+        "featured": false,
+        "views": 1580
+    },
+    {
+        "id": 6,
+        "title": "Tech Trends 2026: What Sahel Startups Need to Watch",
+        "slug": "tech-trends-2026-sahel",
+        "author": "Ali Ayari",
+        "authorRole": "Co-founder @ Wiseboard",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "https://placehold.co/800x450/E8DABE/060507?text=Tech+Trends+2026",
+        "excerpt": "As we approach 2026, discover the emerging technologies and trends that will shape the future of business in North Africa.",
+        "content": "The tech landscape is evolving rapidly. Here are the trends that will define 2026 for startups in our region...",
+        "category": "Technology",
+        "tags": [
+            "Tech Trends",
+            "AI",
+            "Future",
+            "Innovation"
+        ],
+        "readTime": 9,
+        "publishedDate": "2025-11-28",
+        "featured": true,
+        "views": 2100
+    },
+    {
+        "id": 7,
+        "title": "Building a Minimum Viable Product: Best Practices",
+        "slug": "mvp-best-practices",
+        "author": "Jeff Ford",
+        "authorRole": "Global Account Executive @ ConferenceDirect",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "https://placehold.co/800x450/FF1576/060507?text=MVP+Best+Practices",
+        "excerpt": "Learn how to build a lean MVP that validates your business idea without overinvesting in features your customers don't need.",
+        "content": "Your MVP doesn't need to be perfect. Here's how to build something that tests your core hypothesis effectively...",
+        "category": "Product Development",
+        "tags": [
+            "MVP",
+            "Product",
+            "Lean Startup",
+            "Development"
+        ],
+        "readTime": 6,
+        "publishedDate": "2025-11-25",
+        "featured": false,
+        "views": 980
+    },
+    {
+        "id": 8,
+        "title": "Chifaa Success Stories: How PARKITO Found Product-Market Fit",
+        "slug": "parkito-success-story",
+        "author": "Mondher Kebiri",
+        "authorRole": "COO @ Chifaa",
+        "authorImage": "https://placehold.co/64x64",
+        "coverImage": "https://placehold.co/800x450/10A5EE/060507?text=Success+Story",
+        "excerpt": "An inside look at how PARKITO pivoted their business model and found the perfect product-market fit in the smart parking industry.",
+        "content": "PARKITO's journey wasn't straightforward, but their persistence paid off. Here's their story...",
+        "category": "Success Stories",
+        "tags": [
+            "Case Study",
+            "Startups",
+            "Product-Market Fit",
+            "PARKITO"
+        ],
+        "readTime": 12,
+        "publishedDate": "2025-11-20",
+        "featured": false,
+        "views": 1450
+    }
+]

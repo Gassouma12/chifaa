@@ -1,0 +1,370 @@
+/* --- NEW HEADER COMPONENT STYLES --- */
+:root {
+    --bg: #FFFFFF;
+    --ink: #060507;
+    --muted: #5D5257;
+    --nav-outline: rgba(6, 5, 7, 0.12);
+    --pill-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --pill-shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.1);
+    --radius-pill: 9999px;
+    --focus-outline-color: rgba(6, 5, 7, 0.35);
+}
+
+/* --- Base Header Layout --- */
+.site-header {
+    position: sticky;
+    top: 0;
+    /* Stick to the very top */
+    z-index: 50;
+    padding: 0 24px;
+    /* Mobile-first padding */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.site-header.is-scrolling {
+    background-color: rgba(255, 255, 255, 0.65);
+    /* Lower opacity for more blur visibility */
+    backdrop-filter: blur(16px);
+    /* Increased blur radius */
+    -webkit-backdrop-filter: blur(16px);
+    /* For Safari */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+/* --- Brand Mark (Left) --- */
+.brand-mark {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    text-decoration: none;
+}
+
+.brand-mark img {
+    height: 50px;
+    /* Control logo size */
+    width: auto;
+}
+
+/* --- Primary Navigation (Desktop) --- */
+.primary-nav {
+    display: none;
+    /* Hidden on mobile */
+    background: var(--bg);
+    border: 1.5px solid var(--nav-outline);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--pill-shadow);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    height: 48px;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
+    height: 100%;
+}
+
+.nav-list a {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 28px;
+    /* Half of the doubled gap */
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    transition: opacity 0.2s ease;
+}
+
+.nav-list a:hover {
+    opacity: 0.9;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 28px;
+    right: 28px;
+    height: 2px;
+    background-color: var(--ink);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-list a:hover::after,
+.nav-list a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+.nav-list a[aria-current="page"] {
+    font-weight: 700;
+}
+
+/* --- Header Actions (Right) --- */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    /* Mobile height */
+    padding: 0 28px;
+    /* Wider mobile padding */
+    border-radius: var(--radius-pill);
+    background-color: var(--ink);
+    color: var(--bg);
+    font-size: 14px;
+    /* Smaller text */
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--pill-shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+}
+
+.contact-pill:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--pill-shadow-hover);
+    background-color: #FDDD3C;
+    /* Hive Yellow */
+    color: var(--ink);
+    /* Black text on hover */
+}
+
+/* --- Hamburger --- */
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--ink);
+    border-radius: 2px;
+}
+
+/* --- Mobile Nav Sheet --- */
+.mobile-nav-sheet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav-sheet.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-nav li {
+    margin-bottom: 24px;
+    /* Increased spacing */
+}
+
+.mobile-nav a {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 9999px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Contact button in mobile nav - highlighted style */
+.mobile-nav .mobile-contact-btn {
+    background-color: #FDDD3C;
+    border-color: #FDDD3C;
+    color: #060507;
+    font-weight: 700;
+}
+
+.mobile-nav .mobile-contact-btn:hover {
+    background-color: #f5d02b;
+    border-color: #f5d02b;
+}
+
+.close-nav-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+/* --- Focus States --- */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+    /* Make focus more apparent */
+}
+
+.contact-pill:focus-visible {
+    outline-color: white;
+    /* Better contrast on dark bg */
+}
+
+/* --- Tablet & Desktop Styles --- */
+@media (min-width: 1024px) {
+    .site-header {
+        top: 0;
+        /* Stick to the very top */
+        padding: 0 64px;
+    }
+
+    .primary-nav {
+        display: block;
+        transform: translateX(40px);
+        /* Nudge the nav to the right */
+    }
+
+    .hamburger-btn {
+        display: none;
+    }
+
+    .contact-pill {
+        height: 48px;
+        padding: 0 32px;
+        /* Wider desktop padding */
+    }
+}
+
+/* --- Tablet-only for padding --- */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .site-header {
+        padding: 0 40px;
+    }
+}
+
+/* --- Body scroll lock --- */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* --- Theme Switch --- */
+.theme-switch {
+    display: inline-block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-switch__input {
+    display: none;
+}
+
+.theme-switch__track {
+    display: flex;
+    align-items: center;
+    width: 52px;
+    height: 28px;
+    border-radius: 9999px;
+    background-color: #e9e9ea;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.theme-switch__thumb {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateX(3px);
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.theme-switch__icon {
+    width: 14px;
+    height: 14px;
+    color: #fddd3c;
+    /* Sun color */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-switch__icon--moon {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+/* --- Checked State --- */
+.theme-switch__input:checked+.theme-switch__track {
+    background-color: #34323d;
+}
+
+.theme-switch__input:checked+.theme-switch__track .theme-switch__thumb {
+    transform: translateX(27px);
+}
+
+.theme-switch__input:checked+.theme-switch__track .theme-switch__icon--sun {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.theme-switch__input:checked+.theme-switch__track .theme-switch__icon--moon {
+    opacity: 1;
+    transform: translateX(0);
+    color: #8b5cf6;
+    /* Moon color */
+}
