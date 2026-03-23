@@ -54,10 +54,12 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #FDDD3C;
-    background: #060507;
+    color: white;
+    background: #7BBCB0;
     padding: 6px 16px;
-    border-radius: 4px;
+    border-radius: 20px;
+    margin-right: 8px;
+    margin-bottom: 8px;
 }
 
 .article-title {
@@ -294,11 +296,12 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #FDDD3C;
-    background: #060507;
+    color: white;
+    background: #7BBCB0;
     padding: 4px 10px;
     border-radius: 4px;
     display: inline-block;
+    margin-right: 6px;
     margin-bottom: 12px;
 }
 
@@ -380,8 +383,8 @@ body.dark-mode .back-btn:hover {
 }
 
 body.dark-mode .article-category-chip {
-    color: #121212;
-    background: #FDDD3C;
+    color: white;
+    background: #7BBCB0;
 }
 
 body.dark-mode .article-title {
@@ -491,8 +494,8 @@ body.dark-mode .related-card:hover {
 }
 
 body.dark-mode .related-card-category {
-    color: #121212;
-    background: #FDDD3C;
+    color: white;
+    background: #7BBCB0;
 }
 
 body.dark-mode .related-card-title {

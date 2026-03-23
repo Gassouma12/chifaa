@@ -191,3 +191,259 @@ footer p {
         padding: 24px 64px;
     }
 }
+
+/* --- ITAUN MAIN PARTNER STYLES --- */
+.partners-lead {
+    font-size: 1.125rem;
+    color: #5D5257;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.main-partner-card {
+    background: #FAFAFA;
+    border-radius: 32px;
+    padding: 48px;
+    margin-bottom: 80px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+}
+
+.main-partner-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.logo-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    background: #fff;
+    border-radius: 24px;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.glare-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 40%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.4) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg) translateX(-100%);
+    animation: glare 4s infinite;
+}
+
+@keyframes glare {
+    0% { transform: rotate(45deg) translateX(-100%); }
+    20%, 100% { transform: rotate(45deg) translateX(100%); }
+}
+
+.main-partner-logo {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+}
+
+.main-partner-title-group {
+    flex: 1;
+    min-width: 300px;
+}
+.main-partner-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #060507;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.main-partner-title .badge {
+    font-size: 1rem;
+    font-weight: 600;
+    background: #C4687E;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 999px;
+}
+.main-partner-subtitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #7BBCB0;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.main-partner-link {
+    color: #5D5257;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.main-partner-link:hover { color: #C4687E; }
+
+.main-partner-content {
+    color: #5D5257;
+    line-height: 1.8;
+}
+.main-partner-content p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 48px 0;
+}
+.feature-box {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    border-left: 4px solid #7BBCB0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+.feature-box h4 {
+    font-size: 1.2rem;
+    color: #060507;
+    margin-bottom: 12px;
+}
+
+.programs-section, .why-section {
+    margin-top: 48px;
+    background: white;
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+.programs-section h3, .why-section h3 {
+    font-size: 1.8rem;
+    color: #060507;
+    margin-bottom: 24px;
+}
+.programs-list, .benefits-list {
+    list-style: none;
+    padding: 0;
+}
+.programs-list li, .benefits-list li {
+    margin-bottom: 16px;
+    padding-left: 24px;
+    position: relative;
+}
+.programs-list li::before, .benefits-list li::before {
+    content: "\2022";
+    color: #C4687E;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+.benefits-list li::before {
+    content: none;
+}
+.benefits-list strong {
+    color: #C4687E;
+    margin-right: 8px;
+}
+
+.stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+.stat-item {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #C4687E;
+    display: block;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: inherit;
+}
+.stat-label {
+    font-size: 1rem;
+    color: #5D5257;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.other-partners-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #060507;
+}
+
+@media (max-width: 768px) {
+    .main-partner-header { gap: 24px; }
+    .main-partner-title { font-size: 2rem; }
+    .stat-number { font-size: 2.5rem; }
+    .main-partner-card { padding: 24px; }
+    .features-grid { grid-template-columns: 1fr; }
+}
+
+/* Dark mode adjustments */
+body.dark-mode .main-partner-card {
+    background: #1A1A1A;
+    border-color: rgba(255,255,255,0.1);
+}
+body.dark-mode .feature-box,
+body.dark-mode .programs-section,
+body.dark-mode .why-section {
+    background: #242424;
+}
+body.dark-mode .main-partner-title,
+body.dark-mode .feature-box h4,
+body.dark-mode .programs-section h3,
+body.dark-mode .why-section h3,
+body.dark-mode .other-partners-title {
+    color: #ffffff;
+}
+body.dark-mode .main-partner-content,
+body.dark-mode .stat-label,
+body.dark-mode .programs-list li,
+body.dark-mode .benefits-list li {
+    color: rgba(255,255,255,0.8);
+}
+body.dark-mode .logo-wrapper {
+    background: #ffffff; /* Keep white so logo shows well */
+}
+body.dark-mode .stats-row {
+    border-top-color: rgba(255,255,255,0.1);
+}
+body.dark-mode .stat-number {
+    color: #C4687E; /* Ensure stat numbers keep their pink highlight in dark mode */
+}
+body.dark-mode .feature-box {
+    border-left-color: #7BBCB0; /* Ensure accent color stays clean */
+}
+

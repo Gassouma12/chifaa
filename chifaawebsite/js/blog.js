@@ -30,17 +30,13 @@ async function loadBlogData() {
 
 // Generate category filter buttons dynamically
 function generateCategoryFilters() {
-    // Use the same categories as in the admin panel
+    // Use the exact categories resonating with the content
     const allCategories = [
-        'Community Hub',
-        'Sahel & African Innovation',
-        'Chifaa Space Experience',
-        'Events & Programs',
-        'Skills',
-        'Careers',
-        'Entrepreneurship',
-        'Startups',
-        'Chifaa Vision'
+        'Maha Jouini Stories',
+        'Women Testimonies',
+        'Treatment Advice',
+        'AI Ethics & Health',
+        'Mental Strength'
     ];
 
     const filtersContainer = document.querySelector('.blog-filters');

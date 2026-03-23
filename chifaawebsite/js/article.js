@@ -395,11 +395,14 @@ function formatViews(views) {
 
 // Create related article card
 function createRelatedCard(article) {
+    const categories = Array.isArray(article.category) ? article.category : [article.category];
+    const categoryHtml = categories.map(cat => `<span class="related-card-category">${cat}</span>`).join(' ');
+
     return `
         <div class="related-card" onclick="window.location.href='article.html?id=${article.id}'">
             <img src="${article.coverImage}" alt="${article.title}" class="related-card-image" loading="lazy">
             <div class="related-card-content">
-                <span class="related-card-category">${article.category}</span>
+                ${categoryHtml}
                 <h3 class="related-card-title">${article.title}</h3>
                 <div class="related-card-meta">
                     <span>${formatDate(article.publishedDate)}</span>

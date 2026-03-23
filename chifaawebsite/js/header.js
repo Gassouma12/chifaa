@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
     const closeNavBtn = document.querySelector('.close-nav-btn');
     const logo = document.querySelector('.brand-mark');
+    const ribbon = document.querySelector('.brand-ribbon');
     const themeToggle = document.querySelector('.theme-toggle');
     const themeSwapImages = document.querySelectorAll('.theme-swap-image');
 
@@ -12,9 +13,76 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const logoImg = logo.querySelector('img');
+    const logRibbonDebug = (phase) => {
+        if (!ribbon) {
+            console.warn('[RibbonDebug] Ribbon element not found on this page.', { phase });
+            return;
+        }
+        const logoStyles = window.getComputedStyle(logo);
+        const ribbonStyles = window.getComputedStyle(ribbon);
+        const logoRect = logo.getBoundingClientRect();
+        const ribbonRect = ribbon.getBoundingClientRect();
+        console.log('[RibbonDebug]', {
+            phase,
+            logo: {
+                overflow: logoStyles.overflow,
+                position: logoStyles.position,
+                zIndex: logoStyles.zIndex,
+                rect: {
+                    x: Math.round(logoRect.x),
+                    y: Math.round(logoRect.y),
+                    width: Math.round(logoRect.width),
+                    height: Math.round(logoRect.height)
+                }
+            },
+            ribbon: {
+                src: ribbon.getAttribute('src'),
+                display: ribbonStyles.display,
+                visibility: ribbonStyles.visibility,
+                opacity: ribbonStyles.opacity,
+                position: ribbonStyles.position,
+                zIndex: ribbonStyles.zIndex,
+                rect: {
+                    x: Math.round(ribbonRect.x),
+                    y: Math.round(ribbonRect.y),
+                    width: Math.round(ribbonRect.width),
+                    height: Math.round(ribbonRect.height)
+                }
+            }
+        });
+    };
+
+    const logoImg = logo.querySelector('.brand-logo') || logo.querySelector('img');
     const lightLogoSrc = 'assets/images/logo.png';
     const darkLogoSrc = 'assets/images/logo-yellow.png';
+
+    logRibbonDebug('DOMContentLoaded');
+    logo.addEventListener('mouseenter', () => logRibbonDebug('logo mouseenter'));
+    logo.addEventListener('mouseleave', () => logRibbonDebug('logo mouseleave'));
+
+    if (ribbon) {
+        ribbon.addEventListener('load', () => {
+            console.log('[RibbonDebug] Ribbon image loaded.', {
+                src: ribbon.currentSrc || ribbon.src,
+                naturalWidth: ribbon.naturalWidth,
+                naturalHeight: ribbon.naturalHeight
+            });
+        });
+
+        ribbon.addEventListener('error', () => {
+            console.error('[RibbonDebug] Ribbon image failed to load.', {
+                src: ribbon.getAttribute('src')
+            });
+        });
+
+        if (ribbon.complete) {
+            console.log('[RibbonDebug] Ribbon already complete on load.', {
+                src: ribbon.currentSrc || ribbon.src,
+                naturalWidth: ribbon.naturalWidth,
+                naturalHeight: ribbon.naturalHeight
+            });
+        }
+    }
 
     // --- THEME SWITCH LOGIC ---
     // 1. Function to apply theme
@@ -109,39 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. Accelerating logo shake on hover
-    let animationFrameId = null;
-    let startTime = null;
-    const initialFrequency = 1; // Slower start speed
-    const maxFrequency = 8; // Slower max speed
-    const acceleration = 0.001; // Slower acceleration
-    const amplitude = 2; // How far it shakes
-
-    const shake = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const elapsedTime = timestamp - startTime;
-
-        // Increase frequency over time, capped at maxFrequency
-        const currentFrequency = Math.min(initialFrequency + elapsedTime * acceleration, maxFrequency);
-        
-        const x = amplitude * Math.sin(elapsedTime * currentFrequency * 0.01);
-        logo.style.transform = `translateX(${x}px)`;
-
-        animationFrameId = requestAnimationFrame(shake);
-    };
-
-    logo.addEventListener('mouseover', () => {
-        if (!animationFrameId) {
-            startTime = null; // Reset time on new hover
-            animationFrameId = requestAnimationFrame(shake);
-        }
-    });
-
-    logo.addEventListener('mouseout', () => {
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-            logo.style.transform = 'translateX(0px)'; // Reset position
-        }
-    });
 });
+
+// Always scroll to top on reload
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+

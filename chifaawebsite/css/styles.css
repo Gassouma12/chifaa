@@ -152,7 +152,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
   margin-bottom: 0px;
 }
 
@@ -497,7 +497,7 @@ button:hover {
   /* Keep the zoom effect */
 }
 
-.box2 .box2b, .box4 .box4b {
+.box2 .box2b{
   border-radius: 20px;
   position: relative;
   width: 90%;
@@ -509,6 +509,20 @@ button:hover {
   overflow: hidden;
   /* Prevent image overflow on zoom */
 }
+
+ .box4 .box4b {
+  border-radius: 20px;
+  position: relative;
+  width: 100%;
+  left: 0;
+  aspect-ratio: 265/200;
+  background-color: #7BBCB0;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  overflow: hidden;
+  /* Prevent image overflow on zoom */
+}
+
 
 .box2 .box2b,
 .box2 .box2text {
@@ -758,6 +772,12 @@ button:hover {
 
 /* --- Footer --- */
 footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 8px;
   text-align: center;
   padding: 24px;
   max-width: 1240px;
@@ -765,9 +785,9 @@ footer {
 }
 
 footer p {
-  font-size: 12px;
+  font-size: 13px;
   color: #5D5257;
-  margin: 8px 0;
+  margin: 0;
 }
 
 .footer-credit {
@@ -786,7 +806,7 @@ footer p {
 }
 
 .footer-credit a:hover {
-  color: #FEB300;
+  color: #C4687E;
 }
 
 .footer-credit svg {

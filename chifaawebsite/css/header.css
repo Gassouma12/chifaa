@@ -19,6 +19,7 @@
     padding: 0 24px;
     /* Mobile-first padding */
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    overflow: visible;
 }
 
 .site-header.is-scrolling {
@@ -40,6 +41,7 @@
     padding-top: 40px;
     padding-bottom: 10px;
     transition: padding-top 0.35s ease;
+    overflow: visible;
 }
 
 .site-header.is-scrolling .header-container {
@@ -48,8 +50,6 @@
 
 .site-header.is-scrolling .primary-nav {
     background: rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(9.3px);
-    -webkit-backdrop-filter: blur(9.3px);
 }
 
 /* --- Brand Mark (Left) --- */
@@ -57,14 +57,33 @@
     display: grid;
     place-items: center;
     min-width: 44px;
-    min-height: 44px;
+    min-height: auto;
     text-decoration: none;
+    position: relative;
 }
 
-.brand-mark img {
+.brand-logo {
     height: 50px;
     /* Control logo size */
     width: auto;
+    z-index: 10;
+}
+
+.brand-ribbon {
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60px;
+    width: 60px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+    transition: opacity 0.3s ease;
+}
+
+.brand-mark:hover .brand-ribbon {
+    opacity: 1;
 }
 
 /* --- Primary Navigation (Desktop) --- */
@@ -395,4 +414,8 @@ body.dark-mode .theme-toggle::before {
     font-size: 18px;
     line-height: 1;
     color: #f7b9cb;
+}
+
+body.dark-mode .theme-toggle.sound-toggle::before {
+    content: none;
 }

@@ -17,8 +17,10 @@
     <!-- Reusable Header Component -->
     <header class="site-header">
         <div class="header-container">
-            <a href="index.html" class="brand-mark" aria-label="Home"><img src="assets/images/logo.png"
-                    alt="Hive 12 Logo"></a>
+            <a href="index.html" class="brand-mark" aria-label="Home">
+            <img src="assets/images/logo.png" alt="Hive 12 Logo" class="brand-logo">
+            <img src="assets/images/ribbon.gif" alt="Ribbon animation" class="brand-ribbon">
+        </a>
 
             <nav class="primary-nav" aria-label="Primary">
                 <ul class="nav-list">
@@ -89,21 +91,10 @@
         <div class="social-buttons-row">
             <!-- Social links will be loaded from data/about.json -->
         </div>
-
-        <!-- Reviews Section -->
-        <section class="reviews-section">
-            <h2 class="reviews-title">What Our Community Says</h2>
-            <div class="shuffle-cards-container">
-                <div class="shuffle-cards-stack">
-                    <!-- Cards will be loaded from data/reviews.json -->
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <p>&copy; Chifaa ~ All rights reserved</p>
-        <p class="footer-credit">Made with 💛 by Aboulkacem ben Arab <a
+    <footer class="site-footer">
+        <p class="footer-credit">&copy; Chifaa ~ All rights reserved &mdash; Made with 🩷 by Aboulkacem ben Arab <a
                 href="https://www.linkedin.com/in/aboulkacem-ben-arab-567974241/" target="_blank"
                 rel="noopener noreferrer" aria-label="LinkedIn profile of Aboulkacem ben Arab"><svg
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -114,7 +105,7 @@
         <script src="js/header.js"></script>
         <script src="js/splash-cursor.js"></script>
         <script src="js/about.js"></script>
-        <script src="js/shuffle-cards.js"></script>
+    <script src="js/music-player.js"></script>
 </body>
 
 </html>

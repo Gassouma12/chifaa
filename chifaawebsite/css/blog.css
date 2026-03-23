@@ -54,9 +54,9 @@ h1 {
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: #060507;
+    background: #C4687E;
     color: #FFFFFF;
-    border-color: #060507;
+    border-color: #C4687E;
 }
 
 /* Featured Section */
@@ -70,8 +70,8 @@ h1 {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #FDDD3C;
-    background: #060507;
+    color: #FFFFFF;
+    background: #C4687E;
     padding: 6px 16px;
     border-radius: 9999px;
     margin-bottom: 24px;
@@ -137,8 +137,8 @@ h1 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #FDDD3C;
-    background: #060507;
+    color: #FFFFFF;
+    background: #C4687E;
     padding: 4px 10px;
     border-radius: 4px;
     white-space: nowrap;
@@ -230,8 +230,8 @@ h1 {
 
 .blog-tag {
     font-size: 11px;
-    color: #6b7280;
-    background: #f3f4f6;
+    color: #C4687E;
+    background: rgba(196, 104, 126, 0.1);
     padding: 4px 10px;
     border-radius: 4px;
 }
@@ -289,8 +289,8 @@ h1 {
 
 .blog-search input:focus {
     outline: none;
-    border-color: #FDDD3C;
-    box-shadow: 0 0 0 3px rgba(253, 221, 60, 0.1);
+    border-color: #C4687E;
+    box-shadow: 0 0 0 3px rgba(196, 104, 126, 0.1);
 }
 
 .blog-search button {
@@ -298,8 +298,8 @@ h1 {
     right: 8px;
     top: 50%;
     transform: translateY(-50%);
-    background: #FDDD3C;
-    color: #060507;
+    background: transparent;
+    color: #C4687E;
     border: none;
     width: 36px;
     height: 36px;
@@ -313,8 +313,7 @@ h1 {
 }
 
 .blog-search button:hover {
-    background: #060507;
-    color: #FDDD3C;
+    color: #A35064;
 }
 
 .blog-search button i {
@@ -397,14 +396,14 @@ body.dark-mode .filter-btn {
 
 body.dark-mode .filter-btn:hover,
 body.dark-mode .filter-btn.active {
-    background: #FDDD3C;
+    background: #C4687E;
     color: #121212;
-    border-color: #FDDD3C;
+    border-color: #C4687E;
 }
 
 body.dark-mode .featured-label {
-    color: #121212;
-    background: #FDDD3C;
+    color: #FFFFFF;
+    background: #C4687E;
 }
 
 body.dark-mode .blog-card {
@@ -422,8 +421,8 @@ body.dark-mode .blog-card-image {
 }
 
 body.dark-mode .blog-category {
-    color: #121212;
-    background: #FDDD3C;
+    color: #FFFFFF;
+    background: #C4687E;
 }
 
 body.dark-mode .blog-read-time {
@@ -456,8 +455,8 @@ body.dark-mode .blog-date {
 }
 
 body.dark-mode .blog-tag {
-    color: rgba(255, 255, 255, 0.87);
-    background: rgba(255, 255, 255, 0.1);
+    color: #C4687E;
+    background: rgba(196, 104, 126, 0.15);
 }
 
 body.dark-mode .load-more {
@@ -481,20 +480,20 @@ body.dark-mode .blog-search input::placeholder {
 }
 
 body.dark-mode .blog-search input:focus {
-    border-color: #FDDD3C;
-    box-shadow: 0 0 0 3px rgba(253, 221, 60, 0.2);
+    border-color: #C4687E;
+    box-shadow: 0 0 0 3px rgba(196, 104, 126, 0.2);
 }
 
 body.dark-mode .blog-search button {
-    background: #FDDD3C;
-    color: #121212;
+    background: transparent;
+    color: #C4687E;
     border: none;
 }
 
 body.dark-mode .blog-search button:hover {
-    background: #1E1E1E;
-    color: #FDDD3C;
-    border: 2px solid rgba(253, 221, 60, 0.3);
+    background: transparent;
+    color: #A35064;
+    border: none;
 }
 
 body.dark-mode .empty-state {

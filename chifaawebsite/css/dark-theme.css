@@ -18,8 +18,6 @@ body.dark-mode .primary-nav {
 
 body.dark-mode .site-header.is-scrolling .primary-nav {
     background: rgba(18, 18, 18, 0.45);
-    backdrop-filter: blur(9.3px);
-    -webkit-backdrop-filter: blur(9.3px);
 }
 
 body.dark-mode .nav-list a {
@@ -202,4 +200,12 @@ body.dark-mode .reviews-btn {
 /* Footer */
 body.dark-mode footer p {
     color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .footer-credit a {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .footer-credit a:hover {
+    color: #C4687E;
 }
