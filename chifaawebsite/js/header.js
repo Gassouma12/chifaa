@@ -5,7 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
     const closeNavBtn = document.querySelector('.close-nav-btn');
     const logo = document.querySelector('.brand-mark');
-    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeSwapImages = document.querySelectorAll('.theme-swap-image');
+
+    if (!header || !logo) {
+        return;
+    }
 
     const logoImg = logo.querySelector('img');
     const lightLogoSrc = 'assets/images/logo.png';
@@ -17,11 +22,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (theme === 'dark') {
             document.body.classList.add('dark-mode');
             logoImg.src = darkLogoSrc;
-            themeToggle.checked = true;
+            themeSwapImages.forEach((img) => {
+                const darkSrc = img.getAttribute('data-theme-dark');
+                if (darkSrc) {
+                    img.src = darkSrc;
+                }
+            });
+            if (themeToggle) {
+                themeToggle.setAttribute('aria-pressed', 'true');
+            }
         } else {
             document.body.classList.remove('dark-mode');
             logoImg.src = lightLogoSrc;
-            themeToggle.checked = false;
+            themeSwapImages.forEach((img) => {
+                const lightSrc = img.getAttribute('data-theme-light');
+                if (lightSrc) {
+                    img.src = lightSrc;
+                }
+            });
+            if (themeToggle) {
+                themeToggle.setAttribute('aria-pressed', 'false');
+            }
         }
     };
 
@@ -29,16 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = localStorage.getItem('theme');
     applyTheme(currentTheme || 'light'); // Default to light
 
-    // 3. Add event listener for the toggle
-    themeToggle.addEventListener('change', function() {
-        if (this.checked) {
-            applyTheme('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            applyTheme('light');
-            localStorage.setItem('theme', 'light');
-        }
-    });
+    // 3. Add event listeners for the toggle button
+    const toggleTheme = () => {
+        const isDark = document.body.classList.contains('dark-mode');
+        const nextTheme = isDark ? 'light' : 'dark';
+        applyTheme(nextTheme);
+        localStorage.setItem('theme', nextTheme);
+    };
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+    }
 
 
     // --- EXISTING HEADER LOGIC ---
@@ -58,8 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('no-scroll', isOpen);
     };
 
-    hamburgerBtn.addEventListener('click', toggleMobileNav);
-    closeNavBtn.addEventListener('click', toggleMobileNav);
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', toggleMobileNav);
+    }
+    if (closeNavBtn) {
+        closeNavBtn.addEventListener('click', toggleMobileNav);
+    }
 
     // 3. Close mobile nav on link click
     mobileNavLinks.forEach(link => {

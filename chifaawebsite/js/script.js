@@ -45,33 +45,7 @@
     });
   }
 
-  // --- Seamless Play Button Rotation ---
-  const playButton = document.querySelector(".box2 .box2text img");
-
-  if (playButton) {
-      let currentAngle = 0;
-      let rotationSpeed = 0.2; // Slow speed
-      const fastSpeed = 0.4; // Faster speed on hover
-      const slowSpeed = 0.2;
-
-      function animate() {
-          currentAngle += rotationSpeed;
-          const scale = playButton.matches(':hover') ? 1.1 : 1;
-          playButton.style.transform = `scale(${scale}) rotate(${currentAngle}deg)`;
-          requestAnimationFrame(animate);
-      }
-
-      playButton.addEventListener('mouseover', () => {
-          rotationSpeed = fastSpeed;
-      });
-
-      playButton.addEventListener('mouseout', () => {
-          rotationSpeed = slowSpeed;
-      });
-
-      // Start the animation
-      animate();
-  }
+  
 });
 
 // Sticky header on scroll

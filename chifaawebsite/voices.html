@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Hive 12</title>
+    <title>Voices - Hive 12</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/dark-theme.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -80,25 +80,47 @@
     <div class="mobile-nav-overlay"></div>
 
     <main class="page-container">
-        <h1>About</h1>
+        <h1>Voices</h1>
+        <p class="page-subtitle">Insights, stories, and resources for entrepreneurs building the future</p>
 
-        <div class="body-copy-block">
-            <!-- Content will be loaded from data/about.json -->
+        <!-- Search Bar -->
+        <div class="blog-search">
+            <input type="text" id="search-input" placeholder="Search articles...">
+            <button id="search-btn" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
 
-        <div class="social-buttons-row">
-            <!-- Social links will be loaded from data/about.json -->
+        <!-- Category Filters -->
+        <div class="blog-filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="Entrepreneurship">Entrepreneurship</button>
+            <button class="filter-btn" data-category="Founder Stories">Founder Stories</button>
+            <button class="filter-btn" data-category="Marketing">Marketing</button>
+            <button class="filter-btn" data-category="Technology">Technology</button>
+            <button class="filter-btn" data-category="Funding">Funding</button>
         </div>
 
-        <!-- Reviews Section -->
-        <section class="reviews-section">
-            <h2 class="reviews-title">What Our Community Says</h2>
-            <div class="shuffle-cards-container">
-                <div class="shuffle-cards-stack">
-                    <!-- Cards will be loaded from data/reviews.json -->
-                </div>
+        <!-- Featured Articles -->
+        <div class="featured-section" id="featured-section">
+            <span class="featured-label">✨ Featured</span>
+            <div class="featured-grid" id="featured-grid">
+                <!-- Featured articles will be loaded here -->
             </div>
-        </section>
+        </div>
+
+        <!-- All Articles -->
+        <div class="blog-grid" id="blog-grid">
+            <!-- Blog articles will be loaded here -->
+        </div>
+
+        <!-- Empty State (hidden by default) -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+            <h3>No articles found</h3>
+            <p>Try adjusting your search or filters</p>
+        </div>
+
+        <button class="load-more" id="load-more">Load more articles</button>
     </main>
 
     <footer>
@@ -110,11 +132,12 @@
                     <path
                         d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg></a></p>
-        <script src="js/script.js"></script>
-        <script src="js/header.js"></script>
-        <script src="js/splash-cursor.js"></script>
-        <script src="js/about.js"></script>
-        <script src="js/shuffle-cards.js"></script>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/splash-cursor.js"></script>
+    <script src="js/blog.js"></script>
 </body>
 
 </html>

@@ -417,7 +417,7 @@ function loadArticle() {
     const article = blogData.find(a => a.id === articleId);
 
     if (!article) {
-        window.location.href = 'blog.html';
+        window.location.href = 'voices.html';
         return;
     }
 
