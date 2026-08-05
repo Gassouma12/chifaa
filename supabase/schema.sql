@@ -13,6 +13,22 @@ create or replace function public.set_updated_at() returns trigger
 language plpgsql as $$
 begin new.updated_at = now(); return new; end $$;
 
+-- After importing rows with explicit ids, bump identity sequences so the next
+-- admin insert (no id) doesn't collide. Call via supabase.rpc('reset_identity_sequences').
+create or replace function public.reset_identity_sequences() returns void
+language plpgsql security definer as $$
+declare t text; seq text; mx bigint;
+begin
+  foreach t in array array['articles','team_members','founders','podcast_episodes','partners','authors']
+  loop
+    seq := pg_get_serial_sequence('public.'||t, 'id');
+    if seq is not null then
+      execute format('select coalesce(max(id),0) from public.%I', t) into mx;
+      perform setval(seq, greatest(mx,1), mx > 0);
+    end if;
+  end loop;
+end $$;
+
 -- --------------------------------------------------------------- categories ----
 create table if not exists public.categories (
   slug      text primary key,
@@ -214,13 +230,15 @@ create policy admin_write on public.articles
   for all to authenticated using (true) with check (true);
 
 -- ============================================================ storage bucket ====
+-- Bucket 'media': legacy images keep their assets/... path as the object key;
+-- new admin uploads go under uploads/. Public read, admin-only write.
 insert into storage.buckets (id, name, public)
-values ('images','images', true)
+values ('media','media', true)
 on conflict (id) do update set public = true;
 
-drop policy if exists images_public_read on storage.objects;
-create policy images_public_read on storage.objects
-  for select to anon, authenticated using (bucket_id = 'images');
-drop policy if exists images_admin_write on storage.objects;
-create policy images_admin_write on storage.objects
-  for all to authenticated using (bucket_id = 'images') with check (bucket_id = 'images');
+drop policy if exists media_public_read on storage.objects;
+create policy media_public_read on storage.objects
+  for select to anon, authenticated using (bucket_id = 'media');
+drop policy if exists media_admin_write on storage.objects;
+create policy media_admin_write on storage.objects
+  for all to authenticated using (bucket_id = 'media') with check (bucket_id = 'media');

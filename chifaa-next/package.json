@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "generate": "node scripts/generate-data.mjs",
+    "prebuild": "node scripts/generate-data.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "import": "node scripts/import-to-supabase.mjs",
     "translate": "node scripts/translate-articles.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.112.1",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"

@@ -2,6 +2,7 @@
 
 let blogData = [];
 let authorsData = [];
+let categoriesData = null;
 let currentFilter = 'all';
 let currentSearch = '';
 let displayedArticles = 100;
@@ -24,6 +25,10 @@ async function loadBlogData() {
 
         blogData = await blogResponse.json();
         authorsData = await authorsResponse.json();
+        try {
+            const catRes = await fetch(`/data/categories.json${cacheBuster}`, { cache: 'no-store' });
+            if (catRes.ok) categoriesData = await catRes.json();
+        } catch (e) { /* fall back to built-in defaults */ }
         generateCategoryFilters();
         renderArticles();
     } catch (error) {
@@ -34,7 +39,7 @@ async function loadBlogData() {
 // Generate category filter buttons dynamically
 function generateCategoryFilters() {
     const lang = localStorage.getItem('chifaa_lang') || 'en';
-    const allCategories = lang === 'ar' ? [
+    const fallbackCategories = lang === 'ar' ? [
         'قصص مها الجويني',
         'شهادات النساء',
         'نصائح العلاج',
@@ -49,7 +54,12 @@ function generateCategoryFilters() {
         'Mental Strength',
         'Advocacy'
     ];
-    
+    // Categories come from Supabase (categories.json) so the filter buttons always
+    // match what articles are actually filed under. Fall back to the built-in list
+    // only if the generated file is unavailable.
+    const allCategories = (categoriesData && Array.isArray(categoriesData[lang]) && categoriesData[lang].length)
+        ? categoriesData[lang] : fallbackCategories;
+
     const allText = lang === 'ar' ? 'الكل' : 'All';
 
     const filtersContainer = document.querySelector('.blog-filters');
