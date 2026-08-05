@@ -55,14 +55,22 @@ async function run() {
   const labAr = Object.fromEntries(cats.map((c) => [c.slug, c.label_ar]));
   write('categories', { en: cats.map((c) => c.label_en), ar: cats.map((c) => c.label_ar) });
 
+  // site singletons (fetched here so articles can reuse the bilingual author block)
+  const site = await sel('site_content');
+  const one = (key, lang) => site.find((s) => s.key === key && s.lang === lang)?.data;
+  const authorEn = one('author', 'en') || {};
+  const authorAr = { ...authorEn, ...(one('author', 'ar') || {}) };
+  const authorFor = (lang) => (lang === 'ar' ? authorAr : authorEn);
+
   // articles (published only, via RLS) + translations
   const articles = await sel('articles', '*', { col: 'published_date', asc: false });
   const atr = tByLang(await sel('article_translations'), 'article_id');
   const mkArticle = (a, lang, labels) => {
     const t = atr[a.id]?.[lang] || atr[a.id]?.en; if (!t) return null;
+    const au = authorFor(lang);
     return {
-      id: a.id, title: t.title, slug: a.slug, author: a.author, authorRole: a.author_role,
-      authorImage: a.author_image, coverImage: a.cover_image, excerpt: t.excerpt, content: t.content,
+      id: a.id, title: t.title, slug: a.slug, author: au.name || a.author, authorRole: au.role || a.author_role,
+      authorImage: au.image || a.author_image, coverImage: a.cover_image, excerpt: t.excerpt, content: t.content,
       category: (a.category_slugs || []).map((s) => labels[s] || s), tags: t.tags || [],
       date: a.published_date, readTime: a.read_time, featured: a.featured,
       publishedDate: a.published_date, views: a.views,
@@ -122,9 +130,7 @@ async function run() {
   write('authors', authors.map(mkAuthor));
   write('authors_ar', authors.map(mkAuthor));
 
-  // site singletons
-  const site = await sel('site_content');
-  const one = (key, lang) => site.find((s) => s.key === key && s.lang === lang)?.data;
+  // site singletons (site/one already fetched above)
   if (one('about', 'en')) write('about', one('about', 'en'));
   if (one('about', 'ar')) write('about_ar', one('about', 'ar'));
   if (one('home', 'en')) write('home', one('home', 'en'));

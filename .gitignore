@@ -16,6 +16,9 @@ admin-config.php
 **/serviceRole*.json
 **/*service-role*
 
+# ---- generated from Supabase at build time (prebuild = generate-data) ----
+chifaa-next/public/data/
+
 # ---- local backups / archives / scratch ----
 backups/
 *.tgz

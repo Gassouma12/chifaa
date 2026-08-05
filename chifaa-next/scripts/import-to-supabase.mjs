@@ -42,6 +42,9 @@ const arr = (v) => (Array.isArray(v) ? v : v == null ? [] : [v]);
 const slugify = (s) => String(s).toLowerCase().trim()
   .replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
 const byId = (list) => Object.fromEntries((list || []).map((x) => [x.id, x]));
+// Data is hand-authored, so numeric fields can arrive as strings ("5 min read").
+const toInt = (v, d = 0) => { const n = parseInt(v, 10); return Number.isFinite(n) ? n : d; };
+const estReadTime = (html) => Math.max(1, Math.round(String(html || '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / 200));
 
 async function upsert(table, rows, onConflict) {
   if (!rows.length) return;
@@ -66,6 +69,7 @@ function walk(dir) {
 }
 
 async function uploadImages() {
+  if (process.env.SKIP_IMAGES) { console.log('Skipping image upload (SKIP_IMAGES set)'); return; }
   console.log('Uploading images to bucket "media"...');
   const files = [...walk(path.join(WWW, 'assets', 'images')), ...walk(path.join(WWW, 'assets', 'partners'))];
   let ok = 0;
@@ -103,13 +107,15 @@ async function run() {
   const blogAr = byId(tryJson('blog_ar.json'));
   const articles = [], atr = [];
   for (const a of blogEn) {
+    // readTime is language-neutral: take a positive value from EN or AR, else estimate.
+    const rt = toInt(a.readTime, 0) || toInt(blogAr[a.id]?.readTime, 0) || estReadTime(a.content);
     articles.push({
       id: a.id, slug: a.slug, status: 'published', cover_image: a.coverImage,
       author: a.author || 'Maha Jouini', author_role: a.authorRole, author_image: a.authorImage,
-      category_slugs: arr(a.category).map(slugify), read_time: a.readTime || 1,
-      featured: !!a.featured, published_date: a.publishedDate || a.date || null, views: a.views || 0,
+      category_slugs: arr(a.category).map(slugify), read_time: rt,
+      featured: !!a.featured, published_date: a.publishedDate || a.date || null, views: toInt(a.views, 0),
     });
-    atr.push({ article_id: a.id, lang: 'en', title: a.title, excerpt: a.excerpt, content: a.content, tags: arr(a.tags) });
+    atr.push({ article_id: a.id, lang: 'en', title: a.title, excerpt: a.excerpt, content: a.content, tags: arr(a.tags), ar_edited: false });
     const ar = blogAr[a.id];
     if (ar) atr.push({ article_id: a.id, lang: 'ar', title: ar.title, excerpt: ar.excerpt, content: ar.content, tags: arr(ar.tags), ar_edited: true });
   }
@@ -183,6 +189,14 @@ async function run() {
   const home = tryJson('home.json'); if (home) site.push({ key: 'home', lang: 'en', data: home });
   const contact = tryJson('contact.json'); if (contact) site.push({ key: 'contact', lang: 'en', data: contact });
   const ai = tryJson('aiCompanion.json'); if (ai) site.push({ key: 'ai_companion', lang: 'en', data: ai });
+  // Author block: one author (Maha) with a localized role — store once, bilingual,
+  // instead of duplicating (and desyncing) it on every article.
+  const a0 = blogEn[0];
+  if (a0) {
+    const a0ar = blogAr[a0.id];
+    site.push({ key: 'author', lang: 'en', data: { name: a0.author, role: a0.authorRole, image: a0.authorImage } });
+    site.push({ key: 'author', lang: 'ar', data: { name: a0ar?.author || a0.author, role: a0ar?.authorRole || a0.authorRole, image: a0ar?.authorImage || a0.authorImage } });
+  }
   await upsert('site_content', site, 'key,lang');
 
   // fix identity sequences so new admin inserts don't collide with imported ids
