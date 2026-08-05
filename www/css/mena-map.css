@@ -1,0 +1,91 @@
+/* MENA Map Styles */
+#mena-map-section {
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#mena-map-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.mena-map-subtitle {
+  max-width: 780px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(44, 36, 32, 0.75);
+}
+
+body.dark-mode .mena-map-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Tooltip Enhancements */
+.mena-tooltip {
+  border: 1px solid rgba(196, 104, 126, 0.2) !important;
+  background: rgba(253, 250, 247, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(196, 104, 126, 0.08) !important;
+  border-radius: 12px !important;
+}
+
+.mena-tooltip .icon-tooltip {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: rgba(196, 104, 126, 0.14);
+  border: 1px solid rgba(196, 104, 126, 0.35);
+  color: #C4687E !important;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+}
+
+body.dark-mode .mena-tooltip {
+  background: rgba(30, 30, 40, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4) !important;
+  color: #fff !important;
+}
+
+body.dark-mode .mena-tooltip h3 {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f7b9cb !important;
+}
+
+body.dark-mode .mena-tooltip span {
+  color: #aaa !important;
+}
+
+body.dark-mode .mena-tooltip .icon-tooltip {
+  background: rgba(247, 185, 203, 0.16);
+  border-color: rgba(247, 185, 203, 0.45);
+  color: #f7b9cb !important;
+}
+
+@media (max-width: 768px) {
+    #mena-map-section h2 {
+        font-size: 2rem;
+    }
+
+    .mena-map-subtitle {
+        font-size: 0.95rem;
+    }
+}

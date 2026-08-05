@@ -1,0 +1,508 @@
+[
+    {
+        "id": "DZA",
+        "country": "Algeria",
+        "iso2": "DZ",
+        "flag": "🇩🇿",
+        "womensHealth": {
+            "femalePopShare": "49.1%",
+            "lifeExpectancy": "78.2",
+            "maternalMortality": "112",
+            "literacyRate": "75.3%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "12.8% (WHO)",
+            "cardiovascularRate": "34.2% (WHO)",
+            "obesityRate": "26.8%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "11.2",
+            "mortalityRate": "6.8",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "7.5%"
+        }
+    },
+    {
+        "id": "EGY",
+        "country": "Egypt",
+        "iso2": "EG",
+        "flag": "🇪🇬",
+        "womensHealth": {
+            "femalePopShare": "49.5%",
+            "lifeExpectancy": "73.8",
+            "maternalMortality": "37",
+            "literacyRate": "65.5%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "17.3% (WHO)",
+            "cardiovascularRate": "46.2% (WHO)",
+            "obesityRate": "39.8%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "2.3",
+            "mortalityRate": "1.5",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "1.1%"
+        }
+    },
+    {
+        "id": "SAU",
+        "country": "Saudi Arabia",
+        "iso2": "SA",
+        "flag": "🇸🇦",
+        "womensHealth": {
+            "femalePopShare": "42.3%",
+            "lifeExpectancy": "76.4",
+            "maternalMortality": "17",
+            "literacyRate": "92.7%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "18.3% (WHO)",
+            "cardiovascularRate": "37.5% (WHO)",
+            "obesityRate": "33.5%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "3.5",
+            "mortalityRate": "1.7",
+            "hpvVacCoverage": "34.0%",
+            "screeningCoverage": "14.2%"
+        }
+    },
+    {
+        "id": "MAR",
+        "country": "Morocco",
+        "iso2": "MA",
+        "flag": "🇲🇦",
+        "womensHealth": {
+            "femalePopShare": "50.3%",
+            "lifeExpectancy": "75.4",
+            "maternalMortality": "72",
+            "literacyRate": "64.6%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "11.2% (WHO)",
+            "cardiovascularRate": "38.1% (WHO)",
+            "obesityRate": "26.1%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "13.4",
+            "mortalityRate": "7.9",
+            "hpvVacCoverage": "12.0%",
+            "screeningCoverage": "8.5%"
+        }
+    },
+    {
+        "id": "ARE",
+        "country": "UAE",
+        "iso2": "AE",
+        "flag": "🇦🇪",
+        "womensHealth": {
+            "femalePopShare": "31.2%",
+            "lifeExpectancy": "79.2",
+            "maternalMortality": "3",
+            "literacyRate": "95.8%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "16.4% (WHO)",
+            "cardiovascularRate": "40.0% (WHO)",
+            "obesityRate": "32.3%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "6.8",
+            "mortalityRate": "3.1",
+            "hpvVacCoverage": "85.0%",
+            "screeningCoverage": "28.5%"
+        }
+    },
+    {
+        "id": "BHR",
+        "country": "Bahrain",
+        "iso2": "BH",
+        "flag": "🇧🇭",
+        "womensHealth": {
+            "femalePopShare": "38.1%",
+            "lifeExpectancy": "78.2",
+            "maternalMortality": "14",
+            "literacyRate": "96%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "14.7%",
+            "cardiovascularRate": "36.2%",
+            "obesityRate": "28.2%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "4.5",
+            "mortalityRate": "2.2",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "12.5%"
+        }
+    },
+    {
+        "id": "COM",
+        "country": "Comoros",
+        "iso2": "KM",
+        "flag": "🇰🇲",
+        "womensHealth": {
+            "femalePopShare": "49.8%",
+            "lifeExpectancy": "65.6",
+            "maternalMortality": "273",
+            "literacyRate": "56.3%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "10.4%",
+            "cardiovascularRate": "28.1%",
+            "obesityRate": "7.8%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "23.4",
+            "mortalityRate": "16.8",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "1.3%"
+        }
+    },
+    {
+        "id": "DJI",
+        "country": "Djibouti",
+        "iso2": "DJ",
+        "flag": "🇩🇯",
+        "womensHealth": {
+            "femalePopShare": "49.8%",
+            "lifeExpectancy": "64.8",
+            "maternalMortality": "248",
+            "literacyRate": "60.4%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "9.4%",
+            "cardiovascularRate": "31.2%",
+            "obesityRate": "13.5%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "14.5",
+            "mortalityRate": "10.2",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "2.6%"
+        }
+    },
+    {
+        "id": "IRQ",
+        "country": "Iraq",
+        "iso2": "IQ",
+        "flag": "🇮🇶",
+        "womensHealth": {
+            "femalePopShare": "49.3%",
+            "lifeExpectancy": "72.4",
+            "maternalMortality": "79",
+            "literacyRate": "75.3%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "13.2%",
+            "cardiovascularRate": "36.8%",
+            "obesityRate": "30.4%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "3.3",
+            "mortalityRate": "2.1",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "4.2%"
+        }
+    },
+    {
+        "id": "JOR",
+        "country": "Jordan",
+        "iso2": "JO",
+        "flag": "🇯🇴",
+        "womensHealth": {
+            "femalePopShare": "47.7%",
+            "lifeExpectancy": "76.1",
+            "maternalMortality": "46",
+            "literacyRate": "97.4%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "14.8%",
+            "cardiovascularRate": "35.3%",
+            "obesityRate": "35.5%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "3.8",
+            "mortalityRate": "2.3",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "8.8%"
+        }
+    },
+    {
+        "id": "KWT",
+        "country": "Kuwait",
+        "iso2": "KW",
+        "flag": "🇰🇼",
+        "womensHealth": {
+            "femalePopShare": "39.4%",
+            "lifeExpectancy": "76.4",
+            "maternalMortality": "12",
+            "literacyRate": "95.6%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "16.1%",
+            "cardiovascularRate": "38.6%",
+            "obesityRate": "37.5%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "5.1",
+            "mortalityRate": "2.8",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "14.4%"
+        }
+    },
+    {
+        "id": "LBN",
+        "country": "Lebanon",
+        "iso2": "LB",
+        "flag": "🇱🇧",
+        "womensHealth": {
+            "femalePopShare": "50.1%",
+            "lifeExpectancy": "80.5",
+            "maternalMortality": "29",
+            "literacyRate": "93.3%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "12.4%",
+            "cardiovascularRate": "39.1%",
+            "obesityRate": "31.2%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "6.8",
+            "mortalityRate": "3.2",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "19.5%"
+        }
+    },
+    {
+        "id": "LBY",
+        "country": "Libya",
+        "iso2": "LY",
+        "flag": "🇱🇾",
+        "womensHealth": {
+            "femalePopShare": "49.6%",
+            "lifeExpectancy": "74.8",
+            "maternalMortality": "72",
+            "literacyRate": "86.1%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "13.6%",
+            "cardiovascularRate": "44.2%",
+            "obesityRate": "32.5%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "7.6",
+            "mortalityRate": "4.2",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "6.4%"
+        }
+    },
+    {
+        "id": "MRT",
+        "country": "Mauritania",
+        "iso2": "MR",
+        "flag": "🇲🇷",
+        "womensHealth": {
+            "femalePopShare": "50.4%",
+            "lifeExpectancy": "66.5",
+            "maternalMortality": "766",
+            "literacyRate": "45.7%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "8.8%",
+            "cardiovascularRate": "24.6%",
+            "obesityRate": "18.5%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "18.2",
+            "mortalityRate": "13.4",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "2.8%"
+        }
+    },
+    {
+        "id": "OMN",
+        "country": "Oman",
+        "iso2": "OM",
+        "flag": "🇴🇲",
+        "womensHealth": {
+            "femalePopShare": "34.1%",
+            "lifeExpectancy": "79.3",
+            "maternalMortality": "19",
+            "literacyRate": "92.7%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "14.5%",
+            "cardiovascularRate": "38.2%",
+            "obesityRate": "27.3%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "6.5",
+            "mortalityRate": "2.6",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "10.4%"
+        }
+    },
+    {
+        "id": "PSE",
+        "country": "Palestine",
+        "iso2": "PS",
+        "flag": "🇵🇸",
+        "womensHealth": {
+            "femalePopShare": "49.2%",
+            "lifeExpectancy": "75.4",
+            "maternalMortality": "27",
+            "literacyRate": "96.6%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "14.3%",
+            "cardiovascularRate": "34.5%",
+            "obesityRate": "29.8%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "4.2",
+            "mortalityRate": "2.4",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "7.2%"
+        }
+    },
+    {
+        "id": "QAT",
+        "country": "Qatar",
+        "iso2": "QA",
+        "flag": "🇶🇦",
+        "womensHealth": {
+            "femalePopShare": "28.3%",
+            "lifeExpectancy": "81.5",
+            "maternalMortality": "9",
+            "literacyRate": "96.4%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "15.8%",
+            "cardiovascularRate": "23.8%",
+            "obesityRate": "35.1%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "4.8",
+            "mortalityRate": "2.1",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "17.6%"
+        }
+    },
+    {
+        "id": "SOM",
+        "country": "Somalia",
+        "iso2": "SO",
+        "flag": "🇸🇴",
+        "womensHealth": {
+            "femalePopShare": "49.9%",
+            "lifeExpectancy": "57.3",
+            "maternalMortality": "829",
+            "literacyRate": "25.8%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "7.5%",
+            "cardiovascularRate": "22.5%",
+            "obesityRate": "8.3%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "24.6",
+            "mortalityRate": "19.3",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "1.0%"
+        }
+    },
+    {
+        "id": "SDN",
+        "country": "Sudan",
+        "iso2": "SD",
+        "flag": "🇸🇩",
+        "womensHealth": {
+            "femalePopShare": "49.8%",
+            "lifeExpectancy": "66.8",
+            "maternalMortality": "295",
+            "literacyRate": "56.1%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "10.4%",
+            "cardiovascularRate": "31.2%",
+            "obesityRate": "12.8%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "15.4",
+            "mortalityRate": "10.5",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "3.5%"
+        }
+    },
+    {
+        "id": "SYR",
+        "country": "Syria",
+        "iso2": "SY",
+        "flag": "🇸🇾",
+        "womensHealth": {
+            "femalePopShare": "49.2%",
+            "lifeExpectancy": "74.8",
+            "maternalMortality": "31",
+            "literacyRate": "82.4%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "11.6%",
+            "cardiovascularRate": "43.5%",
+            "obesityRate": "27.8%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "4.8",
+            "mortalityRate": "3.1",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "5.6%"
+        }
+    },
+    {
+        "id": "TUN",
+        "country": "Tunisia",
+        "iso2": "TN",
+        "flag": "🇹🇳",
+        "womensHealth": {
+            "femalePopShare": "50.4%",
+            "lifeExpectancy": "78.4",
+            "maternalMortality": "43",
+            "literacyRate": "74.4%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "12.1%",
+            "cardiovascularRate": "41.6%",
+            "obesityRate": "28.5%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "6.4",
+            "mortalityRate": "3.7",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "11.8%"
+        }
+    },
+    {
+        "id": "YEM",
+        "country": "Yemen",
+        "iso2": "YE",
+        "flag": "🇾🇪",
+        "womensHealth": {
+            "femalePopShare": "49.5%",
+            "lifeExpectancy": "67.8",
+            "maternalMortality": "164",
+            "literacyRate": "35.0%"
+        },
+        "chronicDisease": {
+            "diabetesPrevalence": "9.8%",
+            "cardiovascularRate": "36.4%",
+            "obesityRate": "17.1%"
+        },
+        "cervicalCancer": {
+            "incidenceRate": "11.2",
+            "mortalityRate": "7.8",
+            "hpvVacCoverage": "Data unavailable",
+            "screeningCoverage": "1.7%"
+        }
+    }
+]

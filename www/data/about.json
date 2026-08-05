@@ -1,0 +1,37 @@
+{
+    "title": "About CHIFAA",
+    "paragraphs": [
+        "CHIFAA (شفاء, healing in Arabic) is a strategic project of ITAUN (African Networking and Innovation Platform), a survivor-led, open-source conversational AI prototype designed to support women living with breast and cervical cancer in North Africa, with applicability across the broader MENA region.",
+        "Rooted in ITAUN's pan-African mission, CHIFAA was built to ensure that Africa's digital transformation centers women's voices in science, research, and technical leadership, with a particular focus on health equity and cancer care.",
+        "The Gap We're Closing",
+        "Existing health AI tools are largely developed using Western datasets, dominant languages, and healthcare assumptions that do not reflect the lived realities of women in the region. As a result, many women encounter health information that is linguistically inaccessible, culturally misaligned, and structurally exclusionary. CHIFAA addresses this gap through a dialect-first, culturally grounded, and privacy-aware design approach, built from inception around regional epistemologies, survivor knowledge, and community governance.",
+        "Unlike commercial health chatbots that localize Western tools post hoc, CHIFAA is constructed from regional linguistic reality, cultural context, and survivor knowledge. The core innovation is methodological: survivor experience is treated as a primary design input and governance mechanism, not an afterthought.",
+        "The Reality in North Africa",
+        "Breast and cervical cancer remain the two leading cancers among women across North Africa. Every year, the region records over 67,000 new cases of breast cancer and more than 14,000 new cases of cervical cancer, with Algeria, Morocco, Egypt, and Tunisia bearing the heaviest burden. Alarmingly, nearly 70% of diagnoses occur at an advanced stage, limiting treatment options and survival outcomes.",
+        "Yet behind every statistic is a woman: a mother, a daughter, a sister, navigating a diagnosis often in silence, with limited access to information, support, or community.",
+        "Chifaa stands alongside every woman navigating breast and cervical cancer, from the moment of diagnosis through survivorship, offering AI-powered companionship, culturally sensitive guidance, and a community that speaks her language.",
+        "How It Works",
+        "CHIFAA is an interactive conversational AI, explicitly non-diagnostic. It provides educational, emotional, and psychosocial support, while directing users to human care professionals when medical intervention is required. The system supports multiple dialectal and indigenous languages, including Tunisian Arabic, Darija, Egyptian Arabic, Hassania, and Tamazight, integrates faith-sensitive guidance, and prioritizes safe access in shared-device and low-resource environments.",
+        "The project advances inclusion by embedding linguistic diversity, cultural humility, and privacy-first design at every layer of the technology stack. Survivors are positioned not as subjects, but as co-designers and governance actors throughout the project lifecycle. Medical professionals and Responsible AI researchers contribute to validation and oversight. All outputs are released as open source."
+    ],
+    "socialLinks": [
+        {
+            "name": "Facebook",
+            "url": "https://www.facebook.com/Chifaatn",
+            "icon": "fab fa-facebook-f",
+            "class": "facebook"
+        },
+        {
+            "name": "Instagram",
+            "url": "https://www.instagram.com/Chifaatn",
+            "icon": "fab fa-instagram",
+            "class": "instagram"
+        },
+        {
+            "name": "LinkedIn",
+            "url": "https://www.linkedin.com/company/Chifaa",
+            "icon": "fab fa-linkedin-in",
+            "class": "linkedin"
+        }
+    ]
+}

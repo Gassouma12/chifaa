@@ -1,0 +1,33 @@
+# ---- dependencies / build output (regenerable) ----
+node_modules/
+.next/
+out/
+chifaa-next/node_modules/
+chifaa-next/.next/
+chifaa-next/out/
+
+# ---- secrets: NEVER commit (public repo) ----
+.env
+.env.*
+!.env.example
+admin-config.php
+*.pem
+*.key
+**/serviceRole*.json
+**/*service-role*
+
+# ---- local backups / archives / scratch ----
+backups/
+*.tgz
+*.zip
+.translation-hashes.json
+
+# ---- local Claude settings / plans / memory (not for public repo) ----
+.claude/
+
+# ---- OS / editor cruft ----
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

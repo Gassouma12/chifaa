@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Team Chifaa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css?v=2">
+    <link rel="stylesheet" href="css/dark-theme.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/on-founders.css">
+    <link rel="stylesheet" href="css/meet-the-team.css">
+    <link rel="stylesheet" href="css/team-showcase.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-pgOYS+r/qIn8MpA0D3Hu0FSr02/uLy3I5mpNB/AYpPXAlw+3qBSkzfrMXEEzLgFWtafKkK7KGXowQcOuSpUJ6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="team-page">
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-mark" aria-label="Home">
+                <img src="assets/images/logo.png" alt="Chifaa Logo" class="brand-logo">
+                <img src="assets/images/ribbon.gif" alt="Ribbon animation" class="brand-ribbon">
+            </a>
+            <nav class="primary-nav" aria-label="Primary">
+                <ul class="nav-list">
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="ai-companion.html" data-i18n="nav.aiCompanion">AI Companion</a></li>
+                    <li><a href="partners.html" data-i18n="nav.aiGame">AI Game</a></li>
+                    <li><a href="voices.html" data-i18n="nav.voices">Voices</a></li>
+                    <li><a href="founder.html" data-i18n="nav.founder">Founders</a></li>
+                    <li><a href="meet-the-team.html" class="active" data-i18n="nav.team">Team</a></li>
+                    <li class="nav-contact-item"><a href="podcast.html" class="contact-pill" data-i18n="nav.podcast">Podcast</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="theme-toggle" title="Toggle theme" role="button" tabindex="0" aria-label="Toggle theme">
+                    <span class="theme-toggle-sr">Toggle theme</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" fill="currentColor" class="theme-toggle__expand" viewBox="0 0 32 32">
+                        <clipPath id="theme-toggle__expand__cutout"><path d="M0-11h25a1 1 0 0017 13v30H0Z" /></clipPath>
+                        <g clip-path="url(#theme-toggle__expand__cutout)"><circle cx="16" cy="16" r="8.4" /><path d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z" /></g>
+                    </svg>
+                </div>
+                <button class="hamburger-btn" aria-label="Open menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="team-container">
+        <div class="team-header">
+            <h1 data-i18n="team.pageTitle">Meet Our Leadership Team</h1>
+            <p data-i18n="team.pageSubtitle">Dedicated experts driving health equity, AI innovation, and compassionate care.</p>
+        </div>
+
+        <div id="team-showcase-container"></div>
+    </main>
+
+    <!-- Modal Component -->
+    <div id="teamModal" class="team-modal-overlay">
+        <div class="team-modal-content">
+            <button class="team-modal-close" aria-label="Close modal">&times;</button>
+            <div class="team-modal-body">
+                <div class="team-modal-image">
+                    <img id="modalImage" src="" alt="Team Member" class="modal-image-glare">
+                </div>
+                <div class="team-modal-info">
+                    <h2 id="modalName">Name</h2>
+                    <span id="modalRole" class="founder-eyebrow">Role</span>
+                    <div id="modalBio" class="bio-content">
+                        <!-- Bio parses here -->
+                    </div>
+                    <div id="modalExtraLink" class="team-modal-extra-link" style="display: none;">
+                        <!-- Extra links parse here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="footer-socials" aria-label="Social links">
+    <a href="#" class="footer-social-link" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
+    </a>
+    <a href="#" class="footer-social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.35A4.65 4.65 0 1 1 12 16.65 4.65 4.65 0 0 1 12 7.35Zm0 2A2.65 2.65 0 1 0 12 14.65 2.65 2.65 0 0 0 12 9.35ZM17.05 6.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+    </a>
+    <a href="#" class="footer-social-link" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.35 8h4.3v14H.35V8Zm7.44 0h4.12v1.91h.06c.57-1.09 1.98-2.24 4.08-2.24 4.36 0 5.16 2.87 5.16 6.6V22h-4.29v-6.85c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V22H7.79V8Z" transform="translate(1.4 .5) scale(.95)"/></svg>
+    </a>
+    <a href="#" class="footer-social-link" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.01 3.01 0 0 0-2.12-2.13C19.5 3.56 12 3.56 12 3.56s-7.5 0-9.38.51A3.01 3.01 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3.01 3.01 0 0 0 2.12 2.13c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.01 3.01 0 0 0 2.12-2.13A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+    </a>
+  </div>
+  <a href="mailto:hello@chifaa.org" class="footer-email">hello@chifaa.org</a>
+  <div class="footer-divider" aria-hidden="true"></div>
+  <div class="footer-logos">
+    <a href="https://www.itaun.org" target="_blank" rel="noopener noreferrer" aria-label="ITAUN">
+      <img src="assets/images/itaunlogo.png" alt="ITAUN" class="footer-logo footer-logo-itaun">
+    </a>
+    <a href="https://menaobservatory.ai/en/home" target="_blank" rel="noopener noreferrer" aria-label="MENA Observatory on Responsible AI">
+      <img src="assets/images/mena.png" alt="MENA Observatory on Responsible AI" class="footer-logo footer-logo-mena">
+    </a>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.rights">&copy; Chifaa ~ All rights reserved</span>
+  </div>
+</footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/header.js?v=2"></script>
+    <script src="js/splash-cursor.js"></script>
+    <script src="js/music-player.js"></script>
+    <script src="js/team-showcase.js"></script>
+    <script src="js/meet-the-team.js"></script>
+</body>
+</html>
+
+

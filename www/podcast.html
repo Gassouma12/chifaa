@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast - Chifaa</title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css?v=2">
+    <link rel="stylesheet" href="css/dark-theme.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <!-- Podcast specific CSS -->
+    <link rel="stylesheet" href="css/podcast.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Reusable Header Component -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-mark" aria-label="Home">
+                <img src="assets/images/logo.png" alt="Chifaa Logo" class="brand-logo">
+                <img src="assets/images/ribbon.gif" alt="Ribbon animation" class="brand-ribbon">
+            </a>
+
+            <nav class="primary-nav" aria-label="Primary">
+                <ul class="nav-list">
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="ai-companion.html" data-i18n="nav.aiCompanion">AI Companion</a></li>
+                    <li><a href="partners.html" data-i18n="nav.aiGame">AI Game</a></li>
+                    <li><a href="voices.html" data-i18n="nav.voices">Voices</a></li>
+                    <li><a href="founder.html" data-i18n="nav.founder">Founder</a></li>
+                    <li><a href="meet-the-team.html" data-i18n="nav.team">Team</a></li>
+                    <li class="nav-contact-item"><a href="podcast.html" class="contact-pill active" data-i18n="nav.podcast">Podcast</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="theme-toggle" title="Toggle theme" role="button" tabindex="0" aria-label="Toggle theme" aria-pressed="false">
+                    <span class="theme-toggle-sr">Toggle theme</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" fill="currentColor" class="theme-toggle__expand" viewBox="0 0 32 32">
+                        <clipPath id="theme-toggle__expand__cutout">
+                            <path d="M0-11h25a1 1 0 0017 13v30H0Z" />
+                        </clipPath>
+                        <g clip-path="url(#theme-toggle__expand__cutout)">
+                            <circle cx="16" cy="16" r="8.4" />
+                            <path d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3zm21.2-9.3c-.9.9-2.3.9-3.2 0-.9-.9-.9-2.3 0-3.2.9-.9 2.3-.9 3.2 0 .9.9.9 2.3 0 3.2zm-16.8 16.8c.9-.9 2.3-.9 3.2 0 .9.9.9 2.3 0 3.2-.9.9-2.3.9-3.2 0-.9-.9-.9-2.3 0-3.2zm16.8.1c-.9-.9-2.3-.9-3.2 0-.9.9-.9 2.3 0 3.2.9.9 2.3.9 3.2 0 .9-.9.9-2.3 0-3.2zm-16.8-16.9c.9.9 2.3.9 3.2 0 .9-.9.9-2.3 0-3.2-.9-.9-2.3-.9-3.2 0-.9.9-.9 2.3 0 3.2z" />
+                        </g>
+                    </svg>
+                </div>
+                
+                <button class="mobile-nav-toggle" aria-expanded="false" aria-controls="mobile-nav">
+                    <span class="sr-only">Menu</span>
+                    <div class="hamburger">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Sheet -->
+    <div class="mobile-nav-sheet" role="dialog" aria-modal="true">
+        <button class="close-nav-btn" aria-label="Close menu">&times;</button>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="ai-companion.html" data-i18n="nav.aiCompanion">AI Companion</a></li>
+                <li><a href="partners.html" data-i18n="nav.aiGame">AI Game</a></li>
+                <li><a href="voices.html" data-i18n="nav.voices">Voices</a></li>
+                <li><a href="founder.html" data-i18n="nav.founder">Founder</a></li>
+                <li><a href="meet-the-team.html" data-i18n="nav.team">Team</a></li>
+                <li><a href="podcast.html" class="mobile-contact-btn" data-i18n="nav.podcast">Podcast</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="mobile-nav-overlay"></div>
+
+    <main class="podcast-main">
+        <section class="podcast-hero">
+            <div class="podcast-container text-center">
+                <span class="hero-badge text-accent" data-i18n="podcast.heroBadge">Listen & Learn</span>
+                <h1 class="podcast-hero-title" data-i18n="podcast.heroTitle">Chifaa Podcast</h1>
+                <p class="podcast-hero-subtitle" data-i18n="podcast.heroSubtitle">Engaging conversations, inspiring stories, and expert insights on mental health, AI, and youth empowerment.</p>
+            </div>
+        </section>
+
+        <section class="podcast-list-section">
+            <div class="podcast-container">
+                <div class="podcast-grid" id="podcastGrid">
+                    <!-- Cards will be dynamically injected here or we can just hardcode mock data -->
+                    
+                    <div class="podcast-card">
+                        <div class="podcast-video">
+                            <!-- Using standard YouTube iframe -->
+                            <iframe src="https://www.youtube.com/embed/jZzH96tA7M4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-meta">
+                                <span class="podcast-tag" data-i18n="podcast.ep1Tag">Mental Health</span>
+                                <span class="podcast-date" data-i18n="podcast.ep1Date">Oct 12, 2025</span>
+                            </div>
+                            <h3 class="podcast-title" data-i18n="podcast.ep1Title">Episode 1: The Future of AI in Therapy</h3>
+                            <p class="podcast-desc" data-i18n="podcast.ep1Desc">An insightful discussion on how AI companions are reshaping mental health access in the MENA region with leading experts.</p>
+                        </div>
+                    </div>
+
+                    <div class="podcast-card">
+                        <div class="podcast-video">
+                            <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-meta">
+                                <span class="podcast-tag" data-i18n="podcast.ep2Tag">Youth Voices</span>
+                                <span class="podcast-date" data-i18n="podcast.ep2Date">Nov 03, 2025</span>
+                            </div>
+                            <h3 class="podcast-title" data-i18n="podcast.ep2Title">Episode 2: Navigating Digital Anxiety</h3>
+                            <p class="podcast-desc" data-i18n="podcast.ep2Desc">Join us as we explore coping mechanisms for the overwhelming digital age, featuring youth advocates and psychologists.</p>
+                        </div>
+                    </div>
+
+                    <div class="podcast-card">
+                        <div class="podcast-video">
+                            <iframe src="https://www.youtube.com/embed/Pj-hTWEUOmc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-meta">
+                                <span class="podcast-tag" data-i18n="podcast.ep3Tag">Innovation</span>
+                                <span class="podcast-date" data-i18n="podcast.ep3Date">Dec 15, 2025</span>
+                            </div>
+                            <h3 class="podcast-title" data-i18n="podcast.ep3Title">Episode 3: Gamifying Wellness</h3>
+                            <p class="podcast-desc" data-i18n="podcast.ep3Desc">How interactive experiences and AI games can be used as effective tools to engage teenagers in psychological resilience training.</p>
+                        </div>
+                    </div>
+
+                    <div class="podcast-card">
+                        <div class="podcast-video">
+                            <iframe src="https://www.youtube.com/embed/xRyl_p1zXG8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-meta">
+                                <span class="podcast-tag" data-i18n="podcast.ep4Tag">Case Studies</span>
+                                <span class="podcast-date" data-i18n="podcast.ep4Date">Jan 08, 2026</span>
+                            </div>
+                            <h3 class="podcast-title" data-i18n="podcast.ep4Title">Episode 4: Success Stories from MENA</h3>
+                            <p class="podcast-desc" data-i18n="podcast.ep4Desc">Highlighting real stories of transformation where proper mental health support made a definitive difference in young lives.</p>
+                        </div>
+                    </div>
+
+                    <div class="podcast-card">
+                        <div class="podcast-video">
+                            <!-- Short video ID for variety -->
+                            <iframe src="https://www.youtube.com/embed/vDcvN3p6wD0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-meta">
+                                <span class="podcast-tag" data-i18n="podcast.ep5Tag">AI Ethics</span>
+                                <span class="podcast-date" data-i18n="podcast.ep5Date">Feb 20, 2026</span>
+                            </div>
+                            <h3 class="podcast-title" data-i18n="podcast.ep5Title">Episode 5: The Boundaries of AI Empathy</h3>
+                            <p class="podcast-desc" data-i18n="podcast.ep5Desc">A deep dive into the ethical considerations of developing AI systems intended to provide emotional support.</p>
+                        </div>
+                    </div>
+
+                    <div class="podcast-card">
+                        <div class="podcast-video">
+                            <iframe src="https://www.youtube.com/embed/YpKV9A7kPGI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="podcast-content">
+                            <div class="podcast-meta">
+                                <span class="podcast-tag" data-i18n="podcast.ep6Tag">Community</span>
+                                <span class="podcast-date" data-i18n="podcast.ep6Date">Mar 10, 2026</span>
+                            </div>
+                            <h3 class="podcast-title" data-i18n="podcast.ep6Title">Episode 6: Building Inclusive Spaces</h3>
+                            <p class="podcast-desc" data-i18n="podcast.ep6Desc">Learn about our efforts with ITAUN to build inclusive digital environments for everyone in the Arab community.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component matches other pages -->
+    <footer class="site-footer">
+        <div class="footer-socials" aria-label="Social links">
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.35A4.65 4.65 0 1 1 12 16.65 4.65 4.65 0 0 1 12 7.35Zm0 2A2.65 2.65 0 1 0 12 14.65 2.65 2.65 0 0 0 12 9.35ZM17.05 6.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.35 8h4.3v14H.35V8Zm7.44 0h4.12v1.91h.06c.57-1.09 1.98-2.24 4.08-2.24 4.36 0 5.16 2.87 5.16 6.6V22h-4.29v-6.85c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V22H7.79V8Z" transform="translate(1.4 .5) scale(.95)"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.01 3.01 0 0 0-2.12-2.13C19.5 3.56 12 3.56 12 3.56s-7.5 0-9.38.51A3.01 3.01 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3.01 3.01 0 0 0 2.12 2.13c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.01 3.01 0 0 0 2.12-2.13A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+            </a>
+        </div>
+        <a href="mailto:hello@chifaa.org" class="footer-email">hello@chifaa.org</a>
+        <div class="footer-divider" aria-hidden="true"></div>
+        <div class="footer-logos">
+            <a href="https://www.itaun.org" target="_blank" rel="noopener noreferrer" aria-label="ITAUN">
+                <img src="assets/images/itaunlogo.png" alt="ITAUN" class="footer-logo footer-logo-itaun">
+            </a>
+            <a href="https://menaobservatory.ai/en/home" target="_blank" rel="noopener noreferrer" aria-label="MENA Observatory on Responsible AI">
+                <img src="assets/images/mena.png" alt="MENA Observatory on Responsible AI" class="footer-logo footer-logo-mena">
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <span data-i18n="footer.rights">&copy; Chifaa ~ All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/header.js?v=2"></script>
+    <script src="js/splash-cursor.js"></script>
+    <script src="js/podcast.js"></script>
+    <script src="js/music-player.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "الحلقة 1: مستقبل الذكاء الاصطناعي في العلاج النفسي",
+    "description": "نقاش عميق حول كيفية إعادة تشكيل رفاق الذكاء الاصطناعي للوصول إلى الصحة النفسية في منطقة الشرق الأوسط وشمال إفريقيا بمشاركة خبراء بارزين.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=jZzH96tA7M4",
+    "tag": "الصحة النفسية",
+    "publishedDate": "2025-10-12",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "الحلقة 2: تجاوز القلق الرقمي",
+    "description": "انضم إلينا في استكشاف آليات التكيف مع العصر الرقمي المرهق، بمشاركة دعاة الشباب وعلماء النفس.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=5qap5aO4i9A",
+    "tag": "أصوات الشباب",
+    "publishedDate": "2025-11-03",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "title": "الحلقة 3: تحويل العافية إلى لعبة",
+    "description": "كيف يمكن استخدام التجارب التفاعلية وألعاب الذكاء الاصطناعي كأدوات فعالة لإشراك المراهقين في التدريب على المرونة النفسية.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Pj-hTWEUOmc",
+    "tag": "الابتكار",
+    "publishedDate": "2025-12-15",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "الحلقة 4: قصص نجاح من منطقة المينا",
+    "description": "تسليط الضوء على قصص واقعية للتحول حيث أحدث الدعم النفسي المناسب فرقاً حاسماً في حياة الشباب.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=xRyl_p1zXG8",
+    "tag": "دراسات حالة",
+    "publishedDate": "2026-01-08",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "الحلقة 5: حدود التعاطف في الذكاء الاصطناعي",
+    "description": "نظرة عميقة في الاعتبارات الأخلاقية لتطوير أنظمة الذكاء الاصطناعي بهدف توفير الدعم العاطفي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=vDcvN3p6wD0",
+    "tag": "أخلاقيات الذكاء الاصطناعي",
+    "publishedDate": "2026-02-20",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "الحلقة 6: بناء مساحات شاملة",
+    "description": "تعرف على جهودنا مع مجتمع ITAUN لبناء بيئات رقمية شاملة للجميع في المجتمع العربي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YpKV9A7kPGI",
+    "tag": "المجتمع",
+    "publishedDate": "2026-03-10",
+    "featured": false
+  }
+]

@@ -1,0 +1,145 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "aiCompanion": "AI Companion",
+    "aiGame": "AI Game",
+    "voices": "Voices",
+    "founder": "Founders",
+    "team": "Team",
+    "podcast": "Podcast"
+  },
+  "langToggle": {
+    "label": "<i class=\"fas fa-globe\" style=\"margin-right: 4px;\"></i> AR",
+    "ariaLabel": "Switch to Arabic"
+  },
+  "footer": {
+    "rights": "© Chifaa ~ All rights reserved"
+  },
+
+  "index": {
+    "mainTitle": "Human Centric AI For cancer patients and Survivors in North Africa",
+    "hearThemOut": "Hear them out",
+    "menaMapTitle": "Mapping Cancer & Chronic Disease in the MENA Region",
+    "menaMapSubtitle": "Chifaa stands alongside every woman navigating a cancer diagnosis, from the moment of discovery through survivorship"
+  },
+
+  "about": {
+    "pageTitle": "About",
+    "partnersTitle": "About ITAUN",
+    "itaunBadge": "• Strategic Partner",
+    "itaunSubtitle": "LA PLATEFORME AFRICAINE DE RÉSEAUTAGE ET D'INNOVATION",
+    "itaunDesc1": "ITAUN (African Networking and Innovation Platform) is an initiative designed to strengthen cooperation between key actors in academia, research, and the private sector across Africa. It brings together international experts and senior African leaders to exchange on innovation, entrepreneurship, competitiveness, and digital transformation.",
+    "itaunDesc2": "ITAUN unites universities, higher education institutions, research structures, and professional training centers to drive inclusive and sustainable innovation across the continent.",
+    "networking": "Networking",
+    "networkingDesc": "Cross-sector cooperation between African universities, public institutions, and private enterprises.",
+    "expertise": "Expertise",
+    "expertiseDesc": "Exchange platform for experts, higher education institutions, research bodies, and training centers.",
+    "training": "Training",
+    "trainingDesc": "Workshops, colloquia, and programs on future-oriented professions in collaboration with strategic partners.",
+    "keyPrograms": "Key Programs & Initiatives",
+    "fawrDesc": "(Forum of African Women Researchers), a flagship initiative aligning with CHIFAA's mission to amplify women's voices in science, technology, and innovation across the continent.",
+    "siaafDesc": "(Semaine de l'IA en Afrique), annual AI week gathering researchers, innovators and policymakers. A natural home for CHIFAA's AI for health ethics conversations.",
+    "cafDesc": "(African Colloquium on Training 4.0), advancing digital education and future-skills development as a driver of African excellence.",
+    "bamaDesc": "(Best African Mobile Application), pan-African student competition fostering tech innovation, with 14 countries and hundreds of participants per edition.",
+    "whyTitle": "Why ITAUN & CHIFAA",
+    "whyDesc": "ITAUN's pan-African network and CHIFAA's mission converge on shared values: women's empowerment, inclusive technology, and African-centered innovation. Through this partnership, CHIFAA gains access to:",
+    "benefit1": "A network of researchers, academics and health experts across 14+ African countries",
+    "benefit2": "Visibility through SIAAF, FAWR and ITAUN events as showcase platforms",
+    "benefit3": "Institutional credibility with universities, governments, and NGOs",
+    "benefit4": "A pipeline of young African innovators who can contribute to CHIFAA's technology development",
+    "statCountries": "African\ncountries",
+    "statParticipants": "Event\nparticipants",
+    "statPanelists": "Expert\npanelists",
+    "statLaureates": "FAWR\nlaureates",
+    "poweredBy": "Powered by",
+    "menaDesc": "The MENA Observatory on Responsible AI is an interdisciplinary platform connecting policy-oriented researchers and innovators, aimed at fostering collaboration and building capacity for responsible data and AI practices. Join our diversified regional network to share knowledge, exchange ideas, and advocate for impactful policies that shape the future of AI and data in our region."
+  },
+
+  "aiCompanion": {
+    "comingSoonText": "Our AI companion is currently reading through thousands of medical journals and drinking way too much virtual coffee. We're working hard to get it ready for you!",
+    "checkBack": "Check back soon."
+  },
+
+  "aiGame": {
+    "comingSoonText": "Our AI Game is currently being designed to make learning about AI ethics and health innovation engaging and fun. We're working hard to get it ready for you!",
+    "checkBack": "Check back soon."
+  },
+
+  "voices": {
+    "pageTitle": "Voices of Healing",
+    "pageSubtitle": "Personal stories from Maha Jouini · Women testimonies · Advice during treatment · AI ethics & health · Mental strength",
+    "searchPlaceholder": "Search voices...",
+    "filterAll": "All",
+    "featuredLabel": "✨ Featured",
+    "noArticles": "No articles found",
+    "noArticlesDesc": "Try adjusting your search or filters",
+    "loadMore": "Load more articles"
+  },
+
+  "founder": {
+    "eyebrow": "ABOUT THE FOUNDER",
+    "subtitle": "AI GOVERNANCE EXPERT · FOUNDER OF CHIFAA · AUTHOR",
+    "intro": "\"Technology has a moral responsibility, not only to be intelligent, but to be just. When we design AI with dignity at its centre, we do not simply build better technology. We build a more humane world.\"",
+    "bio1": "Maha Jouini sits at a rare intersection, where artificial intelligence meets humanity, and where personal transformation becomes public purpose.",
+    "bio2": "A digital policy advocate and AI governance expert, Maha currently serves as Digital Communication Officer at the African Union Development Agency (AUDA-NEPAD) in Johannesburg, and as Vice President of the Agence Francophone et Africaine de l'Intelligence Artificielle (AFRIA). Her work shapes how AI is designed, governed, and experienced across Africa and the MENA region, always with equity, dignity, and inclusion at the center.",
+    "bio3": "She holds an MSc in Applied Technology & Artificial Intelligence from Tianjin University of Technology in China, as well as an Executive Master in Data Governance, Cybersecurity and Cloud from HEC Rabat. Her expertise spans AI governance, cloud technologies, digital policy, communication, and human-centered innovation. Her academic and executive training also includes Ethics, Technology, and Public Policy for Practitioners at Stanford University, Advanced AI Policy & Ethics studies at the University of Cape Town, and AI Politics & Digital Justice studies with the CAIDP Centre for AI & Digital Policy in the United States.",
+    "bio4": "In 2026, she was honoured with the She Shapes AI Award in the AI Thought Leadership category, a recognition that affirmed what has always driven her work: that lived experience is not a footnote to expertise. It is expertise.",
+    "bio5": "But Maha's story does not begin in a boardroom. It begins with survival, healing, and reinvention. As a cancer survivor currently undergoing hormonal treatment after surgery and radiation, she learned to listen deeply to her body, emotions, and humanity in a world that often rewards exhaustion over wellbeing. That experience transformed not only her life, but also her vision of technology itself.",
+    "bio6": "That lived reality became the foundation of CHIFAA, a human-centered AI initiative designed for cancer patients and survivors in North Africa. Through CHIFAA, Maha advocates for compassionate, culturally grounded, and inclusive technologies that support women navigating illness with dignity, knowledge, and hope.",
+    "bio7": "She is also a storyteller, poet, and creative voice from North Africa. As the author of two books, \"عاشقة من إفريقية\" and \"الرقصة الأخيرة من قرطاج إلى المسين\", Maha explores identity, memory, belonging, and transformation with the same depth she brings to policy and governance work.",
+    "bio8": "Beyond technology and policy, she believes creativity itself is a form of healing and resistance. Whether through writing, public speaking, or advocacy, she continues to build bridges between ethics, art, health, and emerging technologies. Maha Jouini does not simply advocate for human-centered AI. She lives it.",
+    "tagGovernance": "AI Governance",
+    "tagNepad": "AUDA-NEPAD",
+    "tagAfria": "AFRIA VP",
+    "tagAuthor": "AUTHOR",
+    "tagBooks": "Author · 2 books",
+    "tagCity": "Johannesburg"
+  },
+
+  "article": {
+    "back": "Back to Voices",
+    "shareTitle": "Share this article",
+    "copied": "Link copied, paste it on Instagram"
+  },
+
+  "team": {
+    "pageTitle": "Meet Our Leadership Team",
+    "pageSubtitle": "Dedicated experts driving health equity, AI innovation, and compassionate care."
+  },
+
+  "podcast": {
+    "heroBadge": "Listen & Learn",
+    "heroTitle": "Chifaa Podcast",
+    "heroSubtitle": "Engaging conversations, inspiring stories, and expert insights on mental health, AI, and youth empowerment.",
+    "ep1Tag": "Mental Health",
+    "ep1Date": "Oct 12, 2025",
+    "ep1Title": "Episode 1: The Future of AI in Therapy",
+    "ep1Desc": "An insightful discussion on how AI companions are reshaping mental health access in the MENA region with leading experts.",
+    "ep2Tag": "Youth Voices",
+    "ep2Date": "Nov 03, 2025",
+    "ep2Title": "Episode 2: Navigating Digital Anxiety",
+    "ep2Desc": "Join us as we explore coping mechanisms for the overwhelming digital age, featuring youth advocates and psychologists.",
+    "ep3Tag": "Innovation",
+    "ep3Date": "Dec 15, 2025",
+    "ep3Title": "Episode 3: Gamifying Wellness",
+    "ep3Desc": "How interactive experiences and AI games can be used as effective tools to engage teenagers in psychological resilience training.",
+    "ep4Tag": "Case Studies",
+    "ep4Date": "Jan 08, 2026",
+    "ep4Title": "Episode 4: Success Stories from MENA",
+    "ep4Desc": "Highlighting real stories of transformation where proper mental health support made a definitive difference in young lives.",
+    "ep5Tag": "AI Ethics",
+    "ep5Date": "Feb 20, 2026",
+    "ep5Title": "Episode 5: The Boundaries of AI Empathy",
+    "ep5Desc": "A deep dive into the ethical considerations of developing AI systems intended to provide emotional support.",
+    "ep6Tag": "Community",
+    "ep6Date": "Mar 10, 2026",
+    "ep6Title": "Episode 6: Building Inclusive Spaces",
+    "ep6Desc": "Learn about our efforts with ITAUN to build inclusive digital environments for everyone in the Arab community."
+  },
+
+  "contact": {
+    "title": "Under Construction",
+    "message": "We're building something amazing here. Check back soon!"
+  }
+}

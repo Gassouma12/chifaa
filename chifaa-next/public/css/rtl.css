@@ -1,0 +1,340 @@
+/* ═══════════════════════════════════════════════════════════
+   RTL / Arabic mode overrides
+   Active when: <html dir="rtl"> or body.rtl-mode
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts for Arabic (Tajawal = body · El Messiri = headings) ── */
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@300;400;500;700&display=swap');
+
+/* ── Base direction ──────────────────────────────────────── */
+html[dir="rtl"] body {
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+  text-align: right;
+  line-height: 1.85;
+}
+
+/* Arabic must not have letter-spacing: it breaks the cursive letter-joining */
+html[dir="rtl"] * {
+  letter-spacing: normal !important;
+}
+
+/* Elegant display face for Arabic headings */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] .founder-title,
+html[dir="rtl"] .founder-subtitle,
+html[dir="rtl"] .founder-eyebrow,
+html[dir="rtl"] .team-header h1,
+html[dir="rtl"] .main-title {
+  font-family: 'El Messiri', 'Tajawal', sans-serif;
+}
+
+html[dir="rtl"] .founder-bio {
+  line-height: 2;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+html[dir="rtl"] .header-container {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .primary-nav .nav-list {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .header-actions {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .brand-mark {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* ── Mobile Nav ──────────────────────────────────────────── */
+html[dir="rtl"] .mobile-nav-sheet {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+html[dir="rtl"] .mobile-nav-sheet.is-open {
+  transform: translateX(0);
+}
+
+html[dir="rtl"] .mobile-nav ul {
+  text-align: right;
+  padding-right: 0;
+}
+
+html[dir="rtl"] .mobile-nav a {
+  text-align: right;
+}
+
+html[dir="rtl"] .close-nav-btn {
+  right: auto;
+  left: 16px;
+}
+
+/* ── Language Toggle Button (Desktop) ────────────────────── */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 18px;
+  /* Light mode: solid pink-accent pill so it's clearly visible on the light header */
+  border: 1.5px solid #C4687E;
+  background: rgba(196, 104, 126, 0.1);
+  color: #C4687E;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-right: 6px;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  text-transform: uppercase;
+}
+
+.lang-toggle:hover {
+  background: #C4687E;
+  border-color: #C4687E;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* Dark mode: translucent light pill that reads against the dark header */
+body.dark-mode .lang-toggle {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f0f0f0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+body.dark-mode .lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.lang-toggle:active {
+  transform: scale(0.95);
+}
+
+html[dir="rtl"] .lang-toggle {
+  margin-right: 0;
+  margin-left: 6px;
+}
+
+/* ── Language Toggle Button (Mobile) ─────────────────────── */
+.lang-toggle-mobile {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 16px auto;
+  padding: 12px 0;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary, #e0e0e0);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.lang-toggle-mobile:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+html[dir="rtl"] .site-footer {
+  text-align: center;
+}
+
+html[dir="rtl"] .footer-socials {
+  direction: ltr; /* keep icons L→R */
+}
+
+html[dir="rtl"] .footer-logos {
+  direction: ltr;
+}
+
+/* ── General Content ─────────────────────────────────────── */
+html[dir="rtl"] .page-container {
+  text-align: right;
+}
+
+
+
+/* ── Index / Home ────────────────────────────────────────── */
+html[dir="rtl"] .top-title-box {
+  text-align: right;
+}
+
+html[dir="rtl"] .main-title {
+  text-align: right;
+}
+
+html[dir="rtl"] .box4b-arrow {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+html[dir="rtl"] #mena-map-section {
+  text-align: right;
+}
+
+html[dir="rtl"] #mena-map-section h2,
+html[dir="rtl"] #mena-map-section p {
+  text-align: right;
+}
+
+/* ── About ───────────────────────────────────────────────── */
+html[dir="rtl"] .main-partner-header {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .main-partner-title-group {
+  text-align: right;
+}
+
+html[dir="rtl"] .main-partner-content {
+  text-align: right;
+}
+
+html[dir="rtl"] .features-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .feature-box {
+  text-align: right;
+}
+
+html[dir="rtl"] .programs-list {
+  padding-right: 20px;
+  padding-left: 0;
+}
+
+html[dir="rtl"] .benefits-list {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+html[dir="rtl"] .benefits-list li {
+  direction: rtl;
+}
+
+html[dir="rtl"] .stats-row {
+  direction: rtl;
+}
+
+html[dir="rtl"] .stat-item {
+  text-align: center;
+}
+
+html[dir="rtl"] .powered-by-section {
+  text-align: right;
+}
+
+html[dir="rtl"] .powered-by-partner {
+  flex-direction: row-reverse;
+}
+
+/* ── Founder ─────────────────────────────────────────────── */
+html[dir="rtl"] .founder-hero-container {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .founder-content-col {
+  text-align: right;
+}
+
+html[dir="rtl"] .founder-bio {
+  text-align: right;
+}
+
+html[dir="rtl"] .founder-tags {
+  justify-content: flex-start;
+  direction: rtl;
+}
+
+/* ── Voices / Blog ───────────────────────────────────────── */
+html[dir="rtl"] .blog-search {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .blog-search input {
+  text-align: right;
+}
+
+html[dir="rtl"] .blog-filters {
+  direction: rtl;
+}
+
+html[dir="rtl"] .blog-grid {
+  direction: rtl;
+}
+
+/* ── Team ────────────────────────────────────────────────── */
+html[dir="rtl"] .team-header {
+  text-align: right;
+}
+
+html[dir="rtl"] .team-modal-body {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .team-modal-info {
+  text-align: right;
+}
+
+/* ── Podcast ─────────────────────────────────────────────── */
+html[dir="rtl"] .podcast-hero {
+  text-align: right;
+}
+
+html[dir="rtl"] .podcast-content {
+  text-align: right;
+}
+
+html[dir="rtl"] .podcast-meta {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+/* ── Contact ─────────────────────────────────────────────── */
+html[dir="rtl"] .construction-content {
+  text-align: right;
+}
+
+/* ── Container / grid general overrides ──────────────────── */
+html[dir="rtl"] .container {
+  direction: rtl;
+}
+
+/* ── Utility: flip arrows ────────────────────────────────── */
+html[dir="rtl"] [class*="arrow"] {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* ── Ensure center-aligned sections stay centered ────────── */
+html[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+html[dir="rtl"] .podcast-hero .podcast-container.text-center {
+  text-align: center;
+}

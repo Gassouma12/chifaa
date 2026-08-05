@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>Chifaa</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/header.css?v=2">
+  <link rel="stylesheet" href="css/dark-theme.css">
+  <link rel="stylesheet" href="css/rtl.css">
+  <link rel="stylesheet" href="css/video-modal.css">
+  <link rel="stylesheet" href="css/mena-map.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-pgOYS+r/qIn8MpA0D3Hu0FSr02/uLy3I5mpNB/AYpPXAlw+3qBSkzfrMXEEzLgFWtafKkK7KGXowQcOuSpUJ6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body class="home-page">
+
+  <!-- Reusable Header Component -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-mark" aria-label="Home">
+            <img src="assets/images/logo.png" alt="Chifaa Logo" class="brand-logo">
+            <img src="assets/images/ribbon.gif" alt="Ribbon animation" class="brand-ribbon">
+        </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="ai-companion.html" data-i18n="nav.aiCompanion">AI Companion</a></li>
+          <li><a href="partners.html" data-i18n="nav.aiGame">AI Game</a></li>
+          <li><a href="voices.html" data-i18n="nav.voices">Voices</a></li>
+          <li><a href="founder.html" data-i18n="nav.founder">Founder</a></li>
+                    <li><a href="meet-the-team.html" data-i18n="nav.team">Team</a></li>
+
+<li class="nav-contact-item"><a href="podcast.html" class="contact-pill" data-i18n="nav.podcast">Podcast</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="theme-toggle" title="Toggle theme" role="button" tabindex="0" aria-label="Toggle theme" aria-pressed="false">
+  <span class="theme-toggle-sr">Toggle theme</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    width="1em"
+    height="1em"
+    fill="currentColor"
+    class="theme-toggle__expand"
+    viewBox="0 0 32 32"
+  >
+    <clipPath id="theme-toggle__expand__cutout">
+      <path d="M0-11h25a1 1 0 0017 13v30H0Z" />
+    </clipPath>
+    <g clip-path="url(#theme-toggle__expand__cutout)">
+      <circle cx="16" cy="16" r="8.4" />
+      <path d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z" />
+    </g>
+  </svg>
+</div>
+        <button class="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Sheet -->
+  <div class="mobile-nav-sheet" role="dialog" aria-modal="true">
+    <button class="close-nav-btn" aria-label="Close menu">&times;</button>
+    <nav class="mobile-nav">
+      <ul>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="ai-companion.html" data-i18n="nav.aiCompanion">AI Companion</a></li>
+        <li><a href="partners.html" data-i18n="nav.aiGame">AI Game</a></li>
+        <li><a href="voices.html" data-i18n="nav.voices">Voices</a></li>
+        <li><a href="founder.html" data-i18n="nav.founder">Founder</a></li>
+                    <li><a href="meet-the-team.html" data-i18n="nav.team">Team</a></li>
+
+        <li><a href="podcast.html" class="mobile-contact-btn" data-i18n="nav.podcast">Podcast</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="mobile-nav-overlay"></div>
+
+  <div class="top-title-box">
+    <div class="title-container">
+      <h1 class="main-title" data-editable="mainTitle" data-i18n="index.mainTitle">Human Centric AI For cancer patients and Survivors in North Africa</h1>
+      <p id="typewriter-text" class="typewriter-subtitle">&nbsp;</p>
+    </div>
+  </div>
+  <div class="container">
+                <div class="box4">
+        <div class="box4text play-button-container">
+          <img src="assets/images/play.png" alt="Play button" class="theme-swap-image" data-theme-light="assets/images/play.png" data-theme-dark="assets/images/play-dark.png">
+        </div>
+        <div class="box4mid">
+          <img src="assets/images/voice.png" alt="Voice visual" class="theme-swap-image" data-theme-light="assets/images/voice.png" data-theme-dark="assets/images/voice-dark.png">
+        </div>
+        <a href="voices.html" class="box4b">
+          <span class="box4b-copy" data-i18n="index.hearThemOut">Hear them out</span> <span class="box4b-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    <div class="box3">
+
+      <img src="" alt="" class="middlepic">
+
+    </div>
+    <div class="box2" onclick="window.location.href='founder.html';" style="cursor: pointer;" aria-label="Go to founder page">
+            <div class="box2text play-button-container">
+        <img src="assets/images/found.png" alt="Your Image" class="theme-swap-image" data-theme-light="assets/images/found.png" data-theme-dark="assets/images/found-dark.png">
+      </div>
+      <div class="box2b">
+        <!-- Add an icon -->
+        <!-- Add an icon -->
+        <img src="assets/images/member2.png" alt="New Image" class="new-image">
+      </div>
+    </div>
+    <div class="box5">
+      <div class="box5a"></div>
+      <div class="box5b">
+        <img src="assets/images/Butterfly.gif" class="box5img" alt="Centered Image" id="butterfly-img">
+        <img src="assets/images/plus.png" class="plus-image" alt="Plus Image">
+      </div>
+    </div>
+
+  </div>
+
+  <section id="mena-map-section">
+    <h2 data-i18n="index.menaMapTitle">Mapping Cancer &amp; Chronic Disease in the MENA Region</h2>
+    <p class="mena-map-subtitle" data-i18n="index.menaMapSubtitle">Chifaa stands alongside every woman navigating a cancer diagnosis, from the moment of discovery through survivorship</p>
+    <div id="mena-map-container"></div>
+  </section>
+
+  <footer class="site-footer">
+  <div class="footer-socials" aria-label="Social links">
+    <a href="#" class="footer-social-link" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
+    </a>
+    <a href="#" class="footer-social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.35A4.65 4.65 0 1 1 12 16.65 4.65 4.65 0 0 1 12 7.35Zm0 2A2.65 2.65 0 1 0 12 14.65 2.65 2.65 0 0 0 12 9.35ZM17.05 6.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+    </a>
+    <a href="#" class="footer-social-link" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.35 8h4.3v14H.35V8Zm7.44 0h4.12v1.91h.06c.57-1.09 1.98-2.24 4.08-2.24 4.36 0 5.16 2.87 5.16 6.6V22h-4.29v-6.85c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V22H7.79V8Z" transform="translate(1.4 .5) scale(.95)"/></svg>
+    </a>
+    <a href="#" class="footer-social-link" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.01 3.01 0 0 0-2.12-2.13C19.5 3.56 12 3.56 12 3.56s-7.5 0-9.38.51A3.01 3.01 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3.01 3.01 0 0 0 2.12 2.13c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.01 3.01 0 0 0 2.12-2.13A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+    </a>
+  </div>
+  <a href="mailto:hello@chifaa.org" class="footer-email">hello@chifaa.org</a>
+  <div class="footer-divider" aria-hidden="true"></div>
+  <div class="footer-logos">
+    <a href="https://www.itaun.org" target="_blank" rel="noopener noreferrer" aria-label="ITAUN">
+      <img src="assets/images/itaunlogo.png" alt="ITAUN" class="footer-logo footer-logo-itaun">
+    </a>
+    <a href="https://menaobservatory.ai/en/home" target="_blank" rel="noopener noreferrer" aria-label="MENA Observatory on Responsible AI">
+      <img src="assets/images/mena.png" alt="MENA Observatory on Responsible AI" class="footer-logo footer-logo-mena">
+    </a>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.rights">&copy; Chifaa ~ All rights reserved</span>
+  </div>
+</footer>
+
+  <!-- Video Modal -->
+  <div id="video-modal-overlay" class="video-modal-overlay" style="display: none;">
+    <div class="video-modal-content">
+      <button class="video-modal-close" aria-label="Close video">&times;</button>
+      <div class="video-container">
+        <iframe id="video-iframe" src="" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/splash-cursor.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/header.js?v=2"></script>
+  <script src="js/mobile-stack.js"></script>
+  <script src="js/video-modal.js?v=2"></script>
+  <script src="js/music-player.js"></script>
+  <script src="js/shape-recognizer.js"></script>
+
+  <script src="js/MenaMap.js"></script>
+  <script>
+    (function initMap() {
+        const worldGeoJSON = 'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson';
+        
+        const lang = localStorage.getItem('chifaa_lang') || 'en';
+        const dataPath = lang === 'ar' ? 'data/menaHealthData_ar.json' : 'data/menaHealthData.json';
+
+        const menaMap = new MenaMap(
+            '#mena-map-container',
+            dataPath,
+            worldGeoJSON
+        );
+    })();
+  </script>
+<script src="js/dynamic-content.js"></script>\n</body>
+</html>
+
+
+
+
+
