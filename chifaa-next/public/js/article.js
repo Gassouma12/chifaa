@@ -58,7 +58,7 @@ function createRelatedCard(article) {
     const articleImageSrc = article.coverImage;
 
     return `
-        <div class="related-card" onclick="window.location.href='article.html?id=${article.id}'">
+        <div class="related-card" onclick="window.location.href='${article.slug ? '/articles/' + article.slug + '/' : '/article/?id=' + article.id}'">
             <img src="${articleImageSrc}" alt="${article.title}" class="related-card-image" loading="lazy">
             <div class="related-card-content">
                 ${categoryHtml}
@@ -79,7 +79,7 @@ function loadArticle() {
     const article = blogData.find(a => a.id === articleId);
 
     if (!article) {
-        window.location.href = 'voices.html';
+        window.location.href = '/voices/';
         return;
     }
 

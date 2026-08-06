@@ -41,7 +41,7 @@
   if (box2b) {
     box2b.style.cursor = 'pointer'; // Add a visual cue that it's clickable
     box2b.addEventListener('click', function() {
-      window.location.href = 'on-founders.html';
+      window.location.href = '/founder/';
     });
   }
 

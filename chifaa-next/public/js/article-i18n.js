@@ -6,7 +6,7 @@
   var lang = localStorage.getItem('chifaa_lang') || 'en';
   if (lang !== 'ar') return;
 
-  var slug = location.pathname.replace(/^.*\/articles\//, '').replace(/\.html$/, '');
+  var slug = location.pathname.replace(/^.*\/articles\//, '').replace(/\.html$/, '').replace(/\/$/, '');
   if (!slug) return;
 
   fetch('/data/blog_ar.json?_=' + Date.now(), { cache: 'no-store' })
@@ -46,7 +46,7 @@
       // Also localize the "Related Articles" card titles/categories.
       document.querySelectorAll('.related-card').forEach(function (card) {
         var href = card.getAttribute('href') || '';
-        var s = href.replace(/^.*\/articles\//, '').replace(/\.html$/, '');
+        var s = href.replace(/^.*\/articles\//, '').replace(/\.html$/, '').replace(/\/$/, '');
         var ra = bySlug[s];
         if (!ra) return;
         var t = card.querySelector('.related-card-title');

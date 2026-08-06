@@ -166,7 +166,7 @@ class TeamShowcase {
 
     const extraLink = document.getElementById('modalExtraLink');
     if (String(member.id) === '4' || member.founderLink) {
-      extraLink.innerHTML = '<a href="founder.html">Read Full Founder Bio &rarr;</a>';
+      extraLink.innerHTML = '<a href="/founder/">Read Full Founder Bio &rarr;</a>';
       extraLink.style.display = 'block';
     } else {
       extraLink.style.display = 'none';

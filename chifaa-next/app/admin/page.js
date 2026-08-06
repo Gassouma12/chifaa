@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { supabase, mediaUrl } from '@/lib/supabaseClient';
+import { MenaEditor, PagesEditor } from '@/components/admin/Editors';
 import './admin.css';
 
 /* ----------------------------------------------------------------- config ---- */
@@ -57,14 +58,6 @@ const RESOURCES = [
       { k: 'title', label: 'Title', type: 'text', required: true },
       { k: 'description', label: 'Description', type: 'textarea' },
       { k: 'tag', label: 'Tag', type: 'text' },
-    ] },
-  { key: 'partners', label: 'Partners', icon: '🤝', table: 'partners', titleField: 'name',
-    shared: [
-      { k: 'name', label: 'Name', type: 'text', required: true },
-      { k: 'description', label: 'Description', type: 'textarea' },
-      { k: 'logo', label: 'Logo', type: 'image' },
-      { k: 'website', label: 'Website', type: 'url' },
-      { k: 'background_color', label: 'Background color', type: 'text', hint: '#RRGGBB' },
     ] },
 ];
 
@@ -137,7 +130,7 @@ function Field({ f, value, onChange, err, categories, onToast }) {
       {err && <div className="err-text">{err}</div>}
     </div>
   );
-  if (f.type === 'textarea') return wrap(<textarea id={id} value={value || ''} onChange={(e) => onChange(e.target.value)} />);
+  if (f.type === 'textarea') return wrap(<textarea id={id} dir={f._dir} value={value || ''} onChange={(e) => onChange(e.target.value)} />);
   if (f.type === 'rich') return wrap(<RichText initial={value} dir={f._dir} onChange={onChange} />);
   if (f.type === 'bool') return (
     <div className="field"><label className="switch"><input type="checkbox" checked={!!value} onChange={(e) => onChange(e.target.checked)} /> {f.label}</label></div>
@@ -163,7 +156,7 @@ function Field({ f, value, onChange, err, categories, onToast }) {
       {!categories.length && <span className="hint">No categories yet.</span>}
     </div>
   );
-  return wrap(<input id={id} type="text" value={value || ''} onChange={(e) => onChange(e.target.value)} />);
+  return wrap(<input id={id} type="text" dir={f._dir} value={value || ''} onChange={(e) => onChange(e.target.value)} />);
 }
 
 /* --------------------------------------------------------------- data ops --- */
@@ -340,6 +333,9 @@ export default function AdminPage() {
   const [editing, setEditing] = useState(null); // {parent,tx} or null
   const [categories, setCategories] = useState([]);
   const [toast, setToast] = useState(null);
+  // Localhost-only read-only preview (?demo) for visual QA. No-op on the real
+  // domain, and RLS still blocks all writes, so it exposes nothing non-public.
+  const [demo] = useState(() => typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('demo') && location.hostname === 'localhost');
   const res = RESOURCES.find((r) => r.key === resKey);
 
   const showToast = useCallback((msg, kind) => { setToast({ msg, kind }); setTimeout(() => setToast(null), 3200); }, []);
@@ -351,11 +347,16 @@ export default function AdminPage() {
   }, []);
 
   const refresh = useCallback(async () => {
+    if (!res) return;
     setRows(null); setEditing(null);
     try { setRows(await loadList(res)); } catch (e) { showToast('Load failed: ' + e.message, 'err'); setRows([]); }
   }, [res, showToast]);
 
-  useEffect(() => { if (session) { refresh(); supabase.from('categories').select('*').order('sort').then(({ data }) => setCategories(data || [])); } }, [session, resKey]); // eslint-disable-line
+  useEffect(() => {
+    if (!(session || demo)) return;
+    if (res) refresh();
+    supabase.from('categories').select('*').order('sort').then(({ data }) => setCategories(data || []));
+  }, [session, resKey]); // eslint-disable-line
 
   const del = async (row) => {
     if (!confirm('Delete this item? This cannot be undone.')) return;
@@ -364,8 +365,8 @@ export default function AdminPage() {
   };
   const newRow = () => setEditing({ parent: {}, tx: { en: {}, ar: {} } });
 
-  if (session === undefined) return <div className="cadmin"><div className="cadmin-loading">Loading…</div></div>;
-  if (!session) return <div className="cadmin"><Login onIn={() => { }} /></div>;
+  if (session === undefined && !demo) return <div className="cadmin"><div className="cadmin-loading">Loading…</div></div>;
+  if (!session && !demo) return <div className="cadmin"><Login onIn={() => { }} /></div>;
 
   return (
     <div className="cadmin">
@@ -375,27 +376,30 @@ export default function AdminPage() {
           <nav className="cadmin-nav">
             {RESOURCES.map((r) => (
               <button key={r.key} className={resKey === r.key ? 'active' : ''} onClick={() => { setResKey(r.key); setEditing(null); }}>
-                <span>{r.icon}</span> {r.label}
+                <span className="ico">{r.icon}</span> {r.label}
               </button>
             ))}
-            <button disabled title="Coming next"><span>🌍</span> MENA data</button>
-            <button disabled title="Coming next"><span>📄</span> Pages</button>
+            <button className={resKey === 'mena' ? 'active' : ''} onClick={() => { setResKey('mena'); setEditing(null); }}><span className="ico">🌍</span> MENA data</button>
+            <button className={resKey === 'pages' ? 'active' : ''} onClick={() => { setResKey('pages'); setEditing(null); }}><span className="ico">📄</span> Pages</button>
           </nav>
           <div className="cadmin-side-foot">
-            <small>{session.user.email}</small>
+            <small>{session?.user?.email || 'Preview mode'}</small>
             <button className="btn btn-ghost btn-sm" onClick={() => supabase.auth.signOut()}>Log out</button>
           </div>
         </aside>
         <main className="cadmin-main">
           <header className="cadmin-top">
-            <h2>{res.label}</h2>
+            <h2>{res ? res.label : (resKey === 'mena' ? 'MENA data' : 'Pages')}</h2>
             <div className="row"><button className="btn btn-publish" onClick={() => showToast('Publish pipeline wires up in the deploy step.', 'ok')}>Publish to site</button></div>
           </header>
           <div className="cadmin-body">
-            {editing
-              ? <EditView res={res} row={editing} categories={categories} onCancel={() => setEditing(null)} onSaved={refresh} onToast={showToast} />
-              : rows === null ? <div className="cadmin-loading">Loading…</div>
-                : <ListView res={res} rows={rows} categories={categories} onNew={newRow} onEdit={setEditing} onDelete={del} />}
+            <div className="view-anim" key={resKey + (editing ? '-edit' : '-list')}>
+              {resKey === 'mena' ? <MenaEditor onToast={showToast} />
+                : resKey === 'pages' ? <PagesEditor onToast={showToast} />
+                  : editing ? <EditView res={res} row={editing} categories={categories} onCancel={() => setEditing(null)} onSaved={refresh} onToast={showToast} />
+                    : rows === null ? <div className="cadmin-loading">Loading…</div>
+                      : <ListView res={res} rows={rows} categories={categories} onNew={newRow} onEdit={setEditing} onDelete={del} />}
+            </div>
           </div>
         </main>
       </div>

@@ -39,6 +39,9 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/css/dark-theme.css" precedence="chifaa" />
         <link rel="stylesheet" href="/css/rtl.css" precedence="chifaa" />
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        {/* Critical dark-mode logo whitening, inlined so it applies on first paint
+            (before dark-theme.css finishes loading) — no dark-logo flash. */}
+        <style dangerouslySetInnerHTML={{ __html: 'body.dark-mode .footer-logo-mena,body.dark-mode .mena-logo{filter:brightness(0) invert(1)!important;transition:none!important}' }} />
         {children}
       </body>
     </html>

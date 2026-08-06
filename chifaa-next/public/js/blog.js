@@ -127,7 +127,7 @@ function createBlogCard(article, isFeatured = false) {
                             <div class="blog-author-role">${authorRole}</div>
                         </div>
                     </div>
-                    <div class="blog-date"> &middot;  views</div>
+                    <div class="blog-date">${formatDate(article.publishedDate)}</div>
                 </div>
             </div>
         </article>
@@ -218,7 +218,7 @@ function renderArticles() {
         card.addEventListener('click', function () {
             const articleId = this.getAttribute('data-id');
             const slug = this.getAttribute('data-slug');
-            window.location.href = slug ? `/articles/${slug}.html` : `article.html?id=${articleId}`;
+            window.location.href = slug ? `/articles/${slug}/` : `/article/?id=${articleId}`;
         });
     });
 }

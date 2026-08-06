@@ -25,7 +25,7 @@ function BlogCard({ article, authors, isFeatured = false }) {
   const rawImg = author?.image || article.authorImage || 'https://placehold.co/64x64';
   const authorImg = rawImg.startsWith('/') || rawImg.startsWith('http') ? rawImg : `/${rawImg}`;
   const authorRole = author?.role || article.authorRole || '';
-  const href = article.slug ? `/articles/${article.slug}.html` : `article.html?id=${article.id}`;
+  const href = article.slug ? `/articles/${article.slug}/` : `/article/?id=${article.id}`;
 
   return (
     <article className={`blog-card ${isFeatured ? 'featured' : ''}`} data-id={String(article.id)} data-slug={article.slug || ''}>
@@ -55,7 +55,7 @@ function BlogCard({ article, authors, isFeatured = false }) {
                 <div className="blog-author-role">{authorRole}</div>
               </div>
             </div>
-            <div className="blog-date"> &middot; views</div>
+            <div className="blog-date">{formatDateShort(article.publishedDate)}</div>
           </div>
         </div>
       </a>

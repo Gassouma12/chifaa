@@ -4,14 +4,15 @@ export const metadata = {
   title: 'AI Game',
   description:
     'Chifaa’s AI game is coming soon: an engaging way to learn about AI ethics and health innovation for the MENA community.',
-  alternates: { canonical: '/partners.html' },
+  alternates: { canonical: '/ai-game/' },
 };
 
 const SCRIPTS = ['/js/i18n.js', '/js/script.js', '/js/header.js', '/js/music-player.js'];
 
-export default function PartnersPage() {
+export default function AiGamePage() {
   return (
     <PageShell
+      active="aiGame"
       faUrl="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css"
       scripts={SCRIPTS}
     >

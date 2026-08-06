@@ -11,7 +11,7 @@
     var box2 = document.querySelector('.box2');
     if (box2) {
         box2.addEventListener('click', function () {
-            window.location.href = 'founder.html';
+            window.location.href = '/founder/';
         });
     }
 })();

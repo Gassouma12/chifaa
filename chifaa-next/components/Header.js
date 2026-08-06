@@ -2,15 +2,15 @@
 // pages so header.css / i18n.js / header.js keep working unchanged.
 // `active` marks the current nav item exactly like the legacy pages did.
 
-// Absolute paths so the same nav works from nested routes like /articles/<slug>.html
+// Clean trailing-slash paths so the same nav works in dev and on the static host.
 const NAV_ITEMS = [
-  { key: 'home', href: '/index.html', i18n: 'nav.home', label: 'Home' },
-  { key: 'about', href: '/about.html', i18n: 'nav.about', label: 'About' },
-  { key: 'aiCompanion', href: '/ai-companion.html', i18n: 'nav.aiCompanion', label: 'AI Companion' },
-  { key: 'aiGame', href: '/partners.html', i18n: 'nav.aiGame', label: 'AI Game' },
-  { key: 'voices', href: '/voices.html', i18n: 'nav.voices', label: 'Voices' },
-  { key: 'founder', href: '/founder.html', i18n: 'nav.founder', label: 'Founders' },
-  { key: 'team', href: '/meet-the-team.html', i18n: 'nav.team', label: 'Team' },
+  { key: 'home', href: '/', i18n: 'nav.home', label: 'Home' },
+  { key: 'about', href: '/about/', i18n: 'nav.about', label: 'About' },
+  { key: 'aiCompanion', href: '/ai-companion/', i18n: 'nav.aiCompanion', label: 'AI Companion' },
+  { key: 'aiGame', href: '/ai-game/', i18n: 'nav.aiGame', label: 'AI Game' },
+  { key: 'voices', href: '/voices/', i18n: 'nav.voices', label: 'Voices' },
+  { key: 'founder', href: '/founder/', i18n: 'nav.founder', label: 'Founders' },
+  { key: 'team', href: '/meet-the-team/', i18n: 'nav.team', label: 'Team' },
 ];
 
 function ThemeToggleIcon() {
@@ -35,7 +35,7 @@ export default function Header({ active = '' }) {
     <>
       <header className="site-header">
         <div className="header-container">
-          <a href="/index.html" className="brand-mark" aria-label="Home">
+          <a href="/" className="brand-mark" aria-label="Home">
             <img src="/assets/images/logo.png" alt="Chifaa Logo" className="brand-logo" />
             <img src="/assets/images/ribbon.gif" alt="Ribbon animation" className="brand-ribbon" />
           </a>
@@ -49,7 +49,7 @@ export default function Header({ active = '' }) {
                 </li>
               ))}
               <li className="nav-contact-item">
-                <a href="/podcast.html" className={`contact-pill${active === 'podcast' ? ' active' : ''}`} data-i18n="nav.podcast">Podcast</a>
+                <a href="/podcast/" className={`contact-pill${active === 'podcast' ? ' active' : ''}`} data-i18n="nav.podcast">Podcast</a>
               </li>
             </ul>
           </nav>
@@ -74,7 +74,7 @@ export default function Header({ active = '' }) {
               </li>
             ))}
             <li>
-              <a href="podcast.html" className="mobile-contact-btn" data-i18n="nav.podcast">Podcast</a>
+              <a href="/podcast/" className="mobile-contact-btn" data-i18n="nav.podcast">Podcast</a>
             </li>
           </ul>
         </nav>

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
   return {
     title: article.title,
     description: article.excerpt,
-    alternates: { canonical: `/articles/${article.slug}.html` },
+    alternates: { canonical: `/articles/${article.slug}/` },
     openGraph: {
       title: article.title,
       description: article.excerpt,
@@ -66,7 +66,7 @@ function AuthorSocialIcon({ href, title, path }) {
 
 function RelatedCard({ article }) {
   const categories = Array.isArray(article.category) ? article.category : [article.category];
-  const href = article.slug ? `/articles/${article.slug}.html` : `/article.html?id=${article.id}`;
+  const href = article.slug ? `/articles/${article.slug}/` : `/article/?id=${article.id}`;
   return (
     <a className="related-card" href={href} style={{ textDecoration: 'none', display: 'block' }}>
       <img src={articleImage(article)} alt={article.title} className="related-card-image" loading="lazy" />
@@ -112,7 +112,7 @@ export default async function ArticlePage({ params }) {
     datePublished: article.publishedDate,
     author: { '@type': 'Person', name: article.author },
     publisher: { '@type': 'Organization', name: 'Chifaa' },
-    mainEntityOfPage: `https://chifaa.org/articles/${article.slug}.html`,
+    mainEntityOfPage: `https://chifaa.org/articles/${article.slug}/`,
   };
 
   return (
@@ -120,7 +120,7 @@ export default async function ArticlePage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="article-container">
         <div className="back-nav">
-          <a href="/voices.html" className="back-btn">
+          <a href="/voices/" className="back-btn">
             <i className="fas fa-arrow-left"></i> <span data-i18n="article.back">Back to Voices</span>
           </a>
         </div>

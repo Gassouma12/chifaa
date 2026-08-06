@@ -9,7 +9,7 @@ export default function ArticleRedirect({ idToSlug }) {
   useEffect(() => {
     const id = new URLSearchParams(window.location.search).get('id');
     const slug = idToSlug[id];
-    window.location.replace(slug ? `/articles/${slug}.html` : '/voices.html');
+    window.location.replace(slug ? `/articles/${slug}/` : '/voices/');
   }, [idToSlug]);
 
   return null;
