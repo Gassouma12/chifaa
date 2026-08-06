@@ -13,9 +13,19 @@ html[dir="rtl"] body {
   line-height: 1.85;
 }
 
-/* Arabic must not have letter-spacing: it breaks the cursive letter-joining */
+/* Arabic must not have letter-spacing: it breaks the cursive letter-joining.
+   Also force Zain here: the global `* { font-family: Arial }` reset (styles.css)
+   otherwise blocks the body's Zain from inheriting to every child element.
+   Headings keep El Messiri via the higher-specificity rule below. */
 html[dir="rtl"] * {
   letter-spacing: normal !important;
+  font-family: 'Zain', 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Keep nav items on one line in Arabic (Zain runs a touch wider) */
+html[dir="rtl"] .nav-list a,
+html[dir="rtl"] .mobile-nav a {
+  white-space: nowrap;
 }
 
 /* Elegant display face for Arabic headings */

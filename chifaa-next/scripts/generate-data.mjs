@@ -27,6 +27,22 @@ const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 if (!URL || !KEY) { console.error('Missing NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY'); process.exit(1); }
 const db = createClient(URL, KEY, { auth: { persistSession: false } });
 
+// Resolve stored image paths so they work everywhere on the static site:
+//  - legacy 'assets/...'  -> '/assets/...' (shipped static; trailingSlash-safe)
+//  - admin uploads 'uploads/...' -> Supabase Storage public URL (not shipped static)
+//  - full URLs / root-absolute -> unchanged
+const STORAGE = `${URL}/storage/v1/object/public/media/`;
+const abs = (p) => {
+  if (typeof p !== 'string' || !p) return p;
+  if (/^(https?:|data:)/i.test(p) || p.startsWith('/')) return p;
+  if (p.startsWith('assets/')) return '/' + p;
+  return STORAGE + p.replace(/^\/+/, '');
+};
+const absHtml = (h) => typeof h === 'string'
+  ? h.replace(/(src|href)=(["'])(?:\.{0,2}\/)?(assets\/[^"']+)\2/g, (m, a, q, v) => `${a}=${q}/${v}${q}`)
+     .replace(/(src|href)=(["'])(uploads\/[^"']+)\2/g, (m, a, q, v) => `${a}=${q}${STORAGE}${v}${q}`)
+  : h;
+
 const write = (name, data) => {
   fs.writeFileSync(path.join(OUT, `${name}.json`), JSON.stringify(data, null, 2) + '\n', 'utf8');
   const n = Array.isArray(data) ? data.length : Object.keys(data).length;
@@ -70,7 +86,7 @@ async function run() {
     const au = authorFor(lang);
     return {
       id: a.id, title: t.title, slug: a.slug, author: au.name || a.author, authorRole: au.role || a.author_role,
-      authorImage: au.image || a.author_image, coverImage: a.cover_image, excerpt: t.excerpt, content: t.content,
+      authorImage: abs(au.image || a.author_image), coverImage: abs(a.cover_image), excerpt: t.excerpt, content: absHtml(t.content),
       category: (a.category_slugs || []).map((s) => labels[s] || s), tags: t.tags || [],
       date: a.published_date, readTime: a.read_time, featured: a.featured,
       publishedDate: a.published_date, views: a.views,
@@ -82,7 +98,7 @@ async function run() {
   // team (single language)
   const team = await sel('team_members', '*', { col: 'sort' });
   write('team', team.map((t) => ({
-    id: t.id, name: t.name, role: t.role, bio: t.bio, image: t.image, email: t.email,
+    id: t.id, name: t.name, role: t.role, bio: t.bio, image: abs(t.image), email: t.email,
     linkedin: t.linkedin, twitter: t.twitter, instagram: t.instagram, behance: t.behance,
     eyebrow: t.eyebrow, founderLink: t.founder_link,
   })));
@@ -92,7 +108,7 @@ async function run() {
   const ftr = tByLang(await sel('founder_translations'), 'founder_id');
   const mkFounder = (f, lang) => {
     const t = ftr[f.id]?.[lang] || ftr[f.id]?.en; if (!t) return null;
-    return { name: t.name, eyebrow: t.eyebrow, subtitle: t.subtitle, intro: t.intro, fullBio: t.full_bio, image: f.image, tags: t.tags || [] };
+    return { name: t.name, eyebrow: t.eyebrow, subtitle: t.subtitle, intro: t.intro, fullBio: absHtml(t.full_bio), image: abs(f.image), tags: t.tags || [] };
   };
   write('founder', founders.map((f) => mkFounder(f, 'en')).filter(Boolean));
   write('founder_ar', founders.map((f) => mkFounder(f, 'ar')).filter(Boolean));
@@ -126,7 +142,7 @@ async function run() {
 
   // authors
   const authors = await sel('authors', '*', { col: 'id' });
-  const mkAuthor = (a) => ({ id: a.id, name: a.name, role: a.role, image: a.image, bio: a.bio, socials: a.socials || {} });
+  const mkAuthor = (a) => ({ id: a.id, name: a.name, role: a.role, image: abs(a.image), bio: a.bio, socials: a.socials || {} });
   write('authors', authors.map(mkAuthor));
   write('authors_ar', authors.map(mkAuthor));
 

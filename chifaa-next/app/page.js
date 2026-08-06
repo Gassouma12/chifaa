@@ -60,7 +60,7 @@ export default function HomePage() {
         </div>
 
         <div className="box3">
-          <img src="" alt="" className="middlepic" />
+          <img alt="" className="middlepic" />
         </div>
 
         <div className="box2" style={{ cursor: 'pointer' }} aria-label="Go to founder page">
@@ -94,7 +94,7 @@ export default function HomePage() {
         <div className="video-modal-content">
           <button className="video-modal-close" aria-label="Close video">&times;</button>
           <div className="video-container">
-            <iframe id="video-iframe" src="" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <iframe id="video-iframe" src="about:blank" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
           </div>
         </div>
       </div>

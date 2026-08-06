@@ -333,6 +333,7 @@ export default function AdminPage() {
   const [editing, setEditing] = useState(null); // {parent,tx} or null
   const [categories, setCategories] = useState([]);
   const [toast, setToast] = useState(null);
+  const [dark, setDark] = useState(false);
   // Localhost-only read-only preview (?demo) for visual QA. No-op on the real
   // domain, and RLS still blocks all writes, so it exposes nothing non-public.
   const [demo] = useState(() => typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('demo') && location.hostname === 'localhost');
@@ -345,6 +346,15 @@ export default function AdminPage() {
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
     return () => sub.subscription.unsubscribe();
   }, []);
+
+  // Admin has its own theme; strip the site's dark-mode class so dark-theme.css
+  // (inlined globally) doesn't bleed into the admin and hide text.
+  useEffect(() => {
+    document.body.classList.remove('dark-mode');
+    setDark(localStorage.getItem('chifaa_admin_theme') === 'dark');
+  }, []);
+  const toggleTheme = () => setDark((d) => { const n = !d; try { localStorage.setItem('chifaa_admin_theme', n ? 'dark' : 'light'); } catch (e) { } return n; });
+  const shellCls = 'cadmin' + (dark ? ' cadmin-dark' : '');
 
   const refresh = useCallback(async () => {
     if (!res) return;
@@ -365,11 +375,11 @@ export default function AdminPage() {
   };
   const newRow = () => setEditing({ parent: {}, tx: { en: {}, ar: {} } });
 
-  if (session === undefined && !demo) return <div className="cadmin"><div className="cadmin-loading">Loading…</div></div>;
-  if (!session && !demo) return <div className="cadmin"><Login onIn={() => { }} /></div>;
+  if (session === undefined && !demo) return <div className={shellCls}><div className="cadmin-loading">Loading…</div></div>;
+  if (!session && !demo) return <div className={shellCls}><Login onIn={() => { }} /></div>;
 
   return (
-    <div className="cadmin">
+    <div className={shellCls}>
       <div className="cadmin-shell">
         <aside className="cadmin-side">
           <div className="cadmin-brand">CHIFAA</div>
@@ -390,7 +400,10 @@ export default function AdminPage() {
         <main className="cadmin-main">
           <header className="cadmin-top">
             <h2>{res ? res.label : (resKey === 'mena' ? 'MENA data' : 'Pages')}</h2>
-            <div className="row"><button className="btn btn-publish" onClick={() => showToast('Publish pipeline wires up in the deploy step.', 'ok')}>Publish to site</button></div>
+            <div className="row">
+              <button className="btn btn-ghost btn-sm" onClick={toggleTheme} title="Toggle admin theme">{dark ? '☀️' : '🌙'}</button>
+              <button className="btn btn-publish" onClick={() => showToast('Publish pipeline wires up in the deploy step.', 'ok')}>Publish to site</button>
+            </div>
           </header>
           <div className="cadmin-body">
             <div className="view-anim" key={resKey + (editing ? '-edit' : '-list')}>

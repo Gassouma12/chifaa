@@ -90,7 +90,7 @@ export default function MeetTheTeamPage() {
           <button className="team-modal-close" aria-label="Close modal">&times;</button>
           <div className="team-modal-body">
             <div className="team-modal-image">
-              <img id="modalImage" src="" alt="Team Member" className="modal-image-glare" />
+              <img id="modalImage" alt="Team Member" className="modal-image-glare" />
             </div>
             <div className="team-modal-info">
               <h2 id="modalName">Name</h2>

@@ -2,7 +2,14 @@
 // legacy page loads (styles, header, dark-theme, rtl), served untouched from
 // /public/css so rendering is pixel-identical to the original site.
 
+import fs from 'node:fs';
+import path from 'node:path';
+
 const SITE_URL = 'https://chifaa.org';
+
+// Inlined at build so dark-mode colors are present on first paint (no flash of
+// light-mode text/icons before dark-theme.css loads over the network).
+const darkThemeCss = fs.readFileSync(path.join(process.cwd(), 'public', 'css', 'dark-theme.css'), 'utf8');
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -36,12 +43,11 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning>
         <link rel="stylesheet" href="/css/styles.css" precedence="chifaa" />
         <link rel="stylesheet" href="/css/header.css" precedence="chifaa" />
-        <link rel="stylesheet" href="/css/dark-theme.css" precedence="chifaa" />
         <link rel="stylesheet" href="/css/rtl.css" precedence="chifaa" />
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
-        {/* Critical dark-mode logo whitening, inlined so it applies on first paint
-            (before dark-theme.css finishes loading) — no dark-logo flash. */}
-        <style dangerouslySetInnerHTML={{ __html: 'body.dark-mode .footer-logo-mena,body.dark-mode .mena-logo{filter:brightness(0) invert(1)!important;transition:none!important}' }} />
+        {/* dark-theme.css inlined (not a <link>) so dark-mode colors + logo
+            whitening apply on the very first paint — no light-then-dark flash. */}
+        <style dangerouslySetInnerHTML={{ __html: darkThemeCss }} />
         {children}
       </body>
     </html>
