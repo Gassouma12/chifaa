@@ -334,6 +334,7 @@ export default function AdminPage() {
   const [categories, setCategories] = useState([]);
   const [toast, setToast] = useState(null);
   const [dark, setDark] = useState(false);
+  const [publishing, setPublishing] = useState(false);
   // Localhost-only read-only preview (?demo) for visual QA. No-op on the real
   // domain, and RLS still blocks all writes, so it exposes nothing non-public.
   const [demo] = useState(() => typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('demo') && location.hostname === 'localhost');
@@ -355,6 +356,16 @@ export default function AdminPage() {
   }, []);
   const toggleTheme = () => setDark((d) => { const n = !d; try { localStorage.setItem('chifaa_admin_theme', n ? 'dark' : 'light'); } catch (e) { } return n; });
   const shellCls = 'cadmin' + (dark ? ' cadmin-dark' : '');
+  const publish = async () => {
+    setPublishing(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('publish');
+      if (error) throw error;
+      showToast(data?.message || 'Deploy started — live in ~1-2 minutes.', 'ok');
+    } catch (e) {
+      showToast('Publish failed: ' + (e.message || e), 'err');
+    } finally { setPublishing(false); }
+  };
 
   const refresh = useCallback(async () => {
     if (!res) return;
@@ -402,7 +413,7 @@ export default function AdminPage() {
             <h2>{res ? res.label : (resKey === 'mena' ? 'MENA data' : 'Pages')}</h2>
             <div className="row">
               <button className="btn btn-ghost btn-sm" onClick={toggleTheme} title="Toggle admin theme">{dark ? '☀️' : '🌙'}</button>
-              <button className="btn btn-publish" onClick={() => showToast('Publish pipeline wires up in the deploy step.', 'ok')}>Publish to site</button>
+              <button className="btn btn-publish" onClick={publish} disabled={publishing}>{publishing ? <span className="cadmin-spinner" /> : 'Publish to site'}</button>
             </div>
           </header>
           <div className="cadmin-body">

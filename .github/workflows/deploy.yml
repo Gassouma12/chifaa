@@ -1,0 +1,63 @@
+name: Build & Deploy CHIFAA
+
+# Push  -> build only (a safe CI check; never touches the live site).
+# Manual "Run workflow" with deploy=true, OR the admin "Publish" button
+# (repository_dispatch: publish) -> build AND deploy to OVH.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy_to_ovh:
+        description: 'Deploy the build to the live OVH site'
+        type: boolean
+        default: false
+  repository_dispatch:
+    types: [publish]
+
+concurrency:
+  group: deploy-chifaa
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: chifaa-next
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: chifaa-next/package-lock.json
+
+      - run: npm ci
+
+      - name: Auto-translate new/changed articles (EN -> AR)
+        run: node scripts/translate-supabase.mjs
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+
+      - name: Build static site from Supabase
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      - name: Deploy to OVH via SFTP
+        # Only on an explicit publish/deploy trigger — never on a plain push.
+        if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          port: 22
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local_path: './chifaa-next/out/*'
+          remote_path: ${{ secrets.SFTP_REMOTE_DIR }}
+          sftp_only: true
+          delete_remote_files: false
