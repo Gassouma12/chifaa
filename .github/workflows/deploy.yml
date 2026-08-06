@@ -48,6 +48,12 @@ jobs:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
+      # Legacy /assets/* are already on OVH and never change (new images go
+      # to Supabase Storage). Skip them so deploys upload only app files (~2MB).
+      - name: Strip legacy assets from build (already on OVH)
+        if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
+        run: rm -rf out/assets
+
       - name: Deploy to OVH via SFTP
         # Only on an explicit publish/deploy trigger — never on a plain push.
         if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
