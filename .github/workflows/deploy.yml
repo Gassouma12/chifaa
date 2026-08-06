@@ -34,7 +34,7 @@ jobs:
           cache: npm
           cache-dependency-path: chifaa-next/package-lock.json
 
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
 
       - name: Auto-translate new/changed articles (EN -> AR)
         run: node scripts/translate-supabase.mjs
