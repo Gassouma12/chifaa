@@ -65,6 +65,7 @@ jobs:
           OVH_HOST: ${{ secrets.SFTP_HOST }}
           OVH_DIR: ${{ secrets.SFTP_REMOTE_DIR }}
         run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
           FTP_HOST="${OVH_HOST/sftp./ftp.}"
           FTP_HOST="${FTP_HOST/ssh./ftp.}"
           echo "Deploying to ftps://$FTP_HOST/$OVH_DIR"
