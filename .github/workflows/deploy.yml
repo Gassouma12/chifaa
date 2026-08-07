@@ -55,9 +55,10 @@ jobs:
         run: rm -rf out/assets
 
       # OVH filters GitHub's IPs on port 22 (SSH handshake times out — confirmed
-      # with two different SFTP clients). Port 21 IS reachable. This step probes
-      # what OVH offers (FEAT), uses FTPS if advertised, else plain FTP.
-      - name: Deploy to OVH via FTP/FTPS
+      # with two SFTP clients). Port 21 works. OVH advertises FTPS (AUTH TLS) but
+      # lftp's TLS handshake fails on Ubuntu's OpenSSL 3.x; plain FTP login is
+      # proven working. So: try FTPS first, fall back to plain FTP — never fails.
+      - name: Deploy to OVH via FTPS (plain-FTP fallback)
         if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
         env:
           OVH_USER: ${{ secrets.SFTP_USER }}
@@ -68,28 +69,28 @@ jobs:
           set -e
           sudo apt-get update -qq && sudo apt-get install -y -qq lftp
           FTP_HOST="${OVH_HOST/sftp./ftp.}"; FTP_HOST="${FTP_HOST/ssh./ftp.}"
-          DIR="${OVH_DIR#/}"                       # strip any leading slash -> relative to login dir
-          echo "== Probing ftp://$FTP_HOST (features + home listing) =="
-          FEAT=$(timeout 60 lftp -u "$OVH_USER","$OVH_PASS" "ftp://$FTP_HOST" \
-                   -e "set ftp:ssl-allow no; quote FEAT; pwd; cls -1; bye" 2>&1 || true)
-          echo "$FEAT"
-          echo "== Selecting transport =="
-          if echo "$FEAT" | grep -qi "AUTH TLS"; then
-            echo "FTPS available -> uploading over TLS"
-            SSL="set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate no"
+          DIR="${OVH_DIR#/}"                       # strip leading slash -> relative to login home
+          echo "Target: $FTP_HOST -> $DIR/"
+
+          run_mirror () {   # $1 = ssl config, $2 = max-retries
+            lftp -c "
+              $1
+              set ftp:passive-mode true
+              set net:max-retries ${2:-5}
+              set net:timeout 40
+              set net:reconnect-interval-base 5
+              set mirror:parallel-transfer-count 3
+              open -u '$OVH_USER','$OVH_PASS' 'ftp://$FTP_HOST'
+              mirror --reverse --only-newer --verbose --exclude-glob '.git*' ./out/ '$DIR/'
+              bye
+            "
+          }
+
+          echo '== Attempt 1: FTPS (encrypted) =='
+          if run_mirror "set ftp:ssl-force true; set ftp:ssl-auth TLS; set ftp:ssl-protect-data true; set ftp:ssl-protect-list true; set ssl:verify-certificate no" 2; then
+            echo '✓ Deployed over FTPS (encrypted).'
           else
-            echo "FTPS not advertised -> uploading over plain FTP (port 21)"
-            SSL="set ftp:ssl-allow no"
+            echo '== FTPS handshake failed -> Attempt 2: plain FTP (port 21) =='
+            run_mirror "set ftp:ssl-allow no" 5
+            echo '✓ Deployed over plain FTP.'
           fi
-          echo "== Deploying ./out -> $FTP_HOST:/$DIR =="
-          lftp -c "
-            $SSL
-            set ftp:passive-mode true
-            set net:max-retries 5
-            set net:timeout 40
-            set net:reconnect-interval-base 5
-            set mirror:parallel-transfer-count 3
-            open -u '$OVH_USER','$OVH_PASS' 'ftp://$FTP_HOST'
-            mirror --reverse --only-newer --verbose --exclude-glob '.git*' ./out/ '$DIR/'
-            bye
-          "
