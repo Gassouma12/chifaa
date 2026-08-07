@@ -54,9 +54,10 @@ jobs:
         if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
         run: rm -rf out/assets
 
-      # Deploy via SFTP using lftp (has retry logic that the wlixcc docker
-      # action lacks — earlier attempts timed out on OVH's SSH handshake).
-      - name: Deploy to OVH via SFTP (lftp)
+      # OVH filters GitHub's IPs on port 22 (SSH handshake times out — confirmed
+      # with two different SFTP clients). Port 21 IS reachable. This step probes
+      # what OVH offers (FEAT), uses FTPS if advertised, else plain FTP.
+      - name: Deploy to OVH via FTP/FTPS
         if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
         env:
           OVH_USER: ${{ secrets.SFTP_USER }}
@@ -64,15 +65,31 @@ jobs:
           OVH_HOST: ${{ secrets.SFTP_HOST }}
           OVH_DIR: ${{ secrets.SFTP_REMOTE_DIR }}
         run: |
+          set -e
           sudo apt-get update -qq && sudo apt-get install -y -qq lftp
-          echo "Deploying to sftp://$OVH_HOST/$OVH_DIR"
+          FTP_HOST="${OVH_HOST/sftp./ftp.}"; FTP_HOST="${FTP_HOST/ssh./ftp.}"
+          DIR="${OVH_DIR#/}"                       # strip any leading slash -> relative to login dir
+          echo "== Probing ftp://$FTP_HOST (features + home listing) =="
+          FEAT=$(timeout 60 lftp -u "$OVH_USER","$OVH_PASS" "ftp://$FTP_HOST" \
+                   -e "set ftp:ssl-allow no; quote FEAT; pwd; cls -1; bye" 2>&1 || true)
+          echo "$FEAT"
+          echo "== Selecting transport =="
+          if echo "$FEAT" | grep -qi "AUTH TLS"; then
+            echo "FTPS available -> uploading over TLS"
+            SSL="set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate no"
+          else
+            echo "FTPS not advertised -> uploading over plain FTP (port 21)"
+            SSL="set ftp:ssl-allow no"
+          fi
+          echo "== Deploying ./out -> $FTP_HOST:/$DIR =="
           lftp -c "
-            set sftp:auto-confirm yes
-            set net:max-retries 8
-            set net:reconnect-interval-base 8
-            set net:reconnect-interval-multiplier 1
-            set net:timeout 60
-            open -u '$OVH_USER','$OVH_PASS' 'sftp://$OVH_HOST'
-            mirror --reverse --parallel=2 --only-newer --verbose --exclude-glob '.git*' ./out/ /$OVH_DIR/
+            $SSL
+            set ftp:passive-mode true
+            set net:max-retries 5
+            set net:timeout 40
+            set net:reconnect-interval-base 5
+            set mirror:parallel-transfer-count 3
+            open -u '$OVH_USER','$OVH_PASS' 'ftp://$FTP_HOST'
+            mirror --reverse --only-newer --verbose --exclude-glob '.git*' ./out/ '$DIR/'
             bye
           "
