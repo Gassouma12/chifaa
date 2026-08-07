@@ -37,6 +37,27 @@ var l=localStorage.getItem('chifaa_lang');
 if(l==='ar'){var h=document.documentElement;h.setAttribute('lang','ar');h.setAttribute('dir','rtl');document.body.classList.add('rtl-mode');}
 }catch(e){}})();`;
 
+// Live-data shim: reroute every `data/<name>.json` fetch to the Supabase `data`
+// Edge Function, so admin edits appear on the live site instantly (no rebuild).
+// Falls back to the static /data snapshot if the function errors — so the site
+// still works if Supabase is unreachable. Must run before the legacy scripts.
+// The static build stays the SEO snapshot + first paint; this hydrates it live.
+const liveDataShim = `(function(){try{
+var FN='https://rgptwhksojbxwcnezokf.supabase.co/functions/v1/data/';
+var orig=window.fetch.bind(window);
+window.fetch=function(input,init){
+  try{
+    var url=typeof input==='string'?input:(input&&input.url||'');
+    var q=url.indexOf('?'); var clean=q>=0?url.slice(0,q):url;
+    var m=clean.match(/(?:^|\\/)data\\/([A-Za-z0-9_]+)\\.json$/);
+    if(m){
+      return orig(FN+m[1],init).then(function(r){return (r&&r.ok)?r:orig(input,init);}).catch(function(){return orig(input,init);});
+    }
+  }catch(e){}
+  return orig(input,init);
+};
+}catch(e){}})();`;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -45,6 +66,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/css/header.css" precedence="chifaa" />
         <link rel="stylesheet" href="/css/rtl.css" precedence="chifaa" />
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        <script dangerouslySetInnerHTML={{ __html: liveDataShim }} />
         {/* dark-theme.css inlined (not a <link>) so dark-mode colors + logo
             whitening apply on the very first paint — no light-then-dark flash. */}
         <style dangerouslySetInnerHTML={{ __html: darkThemeCss }} />

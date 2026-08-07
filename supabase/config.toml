@@ -1,0 +1,11 @@
+project_id = "rgptwhksojbxwcnezokf"
+
+# Both functions do their OWN auth (or are public read), and are called from the
+# browser. Keep the platform JWT gate OFF so its CORS-less 401 can't turn a real
+# response into a "failed to send request" error. Redeploys read this file.
+
+[functions.publish]
+verify_jwt = false
+
+[functions.data]
+verify_jwt = false
