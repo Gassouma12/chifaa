@@ -11,7 +11,9 @@ import { serve } from 'https://deno.land/std@0.224.0/http/server.ts';
 
 const cors = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, content-type, apikey',
+  // supabase-js's functions.invoke also sends x-client-info / x-supabase-api-version;
+  // omitting them makes the browser block the request ("Failed to send a request").
+  'Access-Control-Allow-Headers': 'authorization, content-type, apikey, x-client-info, x-supabase-api-version',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
