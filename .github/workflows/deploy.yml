@@ -54,10 +54,9 @@ jobs:
         if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
         run: rm -rf out/assets
 
-      # OVH shared hosting throttles GitHub Actions on port 22 (SFTP).
-      # FTPS on port 21 works reliably. lftp is preinstalled on ubuntu runners,
-      # has retry logic, does parallel + incremental uploads.
-      - name: Deploy to OVH via FTPS
+      # Deploy via SFTP using lftp (has retry logic that the wlixcc docker
+      # action lacks — earlier attempts timed out on OVH's SSH handshake).
+      - name: Deploy to OVH via SFTP (lftp)
         if: ${{ github.event_name == 'repository_dispatch' || (github.event_name == 'workflow_dispatch' && inputs.deploy_to_ovh) }}
         env:
           OVH_USER: ${{ secrets.SFTP_USER }}
@@ -66,17 +65,14 @@ jobs:
           OVH_DIR: ${{ secrets.SFTP_REMOTE_DIR }}
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq lftp
-          FTP_HOST="${OVH_HOST/sftp./ftp.}"
-          FTP_HOST="${FTP_HOST/ssh./ftp.}"
-          echo "Deploying to ftps://$FTP_HOST/$OVH_DIR"
+          echo "Deploying to sftp://$OVH_HOST/$OVH_DIR"
           lftp -c "
-            set ftp:ssl-force true
-            set ftp:ssl-protect-data true
-            set ssl:verify-certificate no
-            set net:max-retries 5
-            set net:reconnect-interval-base 5
-            set net:timeout 30
-            open -u '$OVH_USER','$OVH_PASS' 'ftp://$FTP_HOST'
-            mirror --reverse --parallel=4 --only-newer --verbose --exclude-glob '.git*' ./out/ /$OVH_DIR/
+            set sftp:auto-confirm yes
+            set net:max-retries 8
+            set net:reconnect-interval-base 8
+            set net:reconnect-interval-multiplier 1
+            set net:timeout 60
+            open -u '$OVH_USER','$OVH_PASS' 'sftp://$OVH_HOST'
+            mirror --reverse --parallel=2 --only-newer --verbose --exclude-glob '.git*' ./out/ /$OVH_DIR/
             bye
           "
