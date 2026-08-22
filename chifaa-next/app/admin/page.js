@@ -344,7 +344,14 @@ export default function AdminPage() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session));
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
+    // Supabase re-validates the token when the tab regains focus and fires
+    // SIGNED_IN / TOKEN_REFRESHED with a *fresh* session object. Only update
+    // state when the logged-in user actually changes — otherwise the new object
+    // reference re-runs the data effect below and wipes the list / open edit form
+    // (this looked like the page "reloading" on every tab switch).
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
+      setSession((prev) => (prev && s && prev.user?.id === s.user?.id ? prev : s));
+    });
     return () => sub.subscription.unsubscribe();
   }, []);
 
