@@ -100,6 +100,12 @@ body.dark-mode .body-copy-block .about-subheader {
     /* Font Awesome 5 Brands uses a regular font-weight */
 }
 
+.social-pill i.fas {
+    /* Solid icons (Email, Website, custom) — keep FA rendering, not the site font */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
 
 .social-pill:hover {
     transform: translateY(-2px);
@@ -121,6 +127,41 @@ body.dark-mode .body-copy-block .about-subheader {
 .social-pill.linkedin:hover {
     background-color: #0A66C2;
     border-color: #0A66C2;
+}
+
+.social-pill.twitter:hover {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.social-pill.youtube:hover {
+    background-color: #FF0000;
+    border-color: #FF0000;
+}
+
+.social-pill.tiktok:hover {
+    background-color: #010101;
+    border-color: #010101;
+}
+
+.social-pill.whatsapp:hover {
+    background-color: #25D366;
+    border-color: #25D366;
+}
+
+.social-pill.telegram:hover {
+    background-color: #229ED9;
+    border-color: #229ED9;
+}
+
+.social-pill.email:hover {
+    background-color: #A84E66;
+    border-color: #A84E66;
+}
+
+.social-pill.website:hover {
+    background-color: #333333;
+    border-color: #333333;
 }
 
 /* --- REVIEWS SECTION (SHUFFLE CARDS) --- */

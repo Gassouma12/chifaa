@@ -360,6 +360,15 @@ export default function AdminPage() {
   useEffect(() => {
     document.body.classList.remove('dark-mode');
     setDark(localStorage.getItem('chifaa_admin_theme') === 'dark');
+    // Load Font Awesome (same version the About page uses) so the social-link
+    // preview pills in the Pages editor show their real brand icons.
+    const FA_ID = 'cadmin-fa';
+    if (!document.getElementById(FA_ID)) {
+      const l = document.createElement('link');
+      l.id = FA_ID; l.rel = 'stylesheet';
+      l.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css';
+      document.head.appendChild(l);
+    }
   }, []);
   const toggleTheme = () => setDark((d) => { const n = !d; try { localStorage.setItem('chifaa_admin_theme', n ? 'dark' : 'light'); } catch (e) { } return n; });
   const shellCls = 'cadmin' + (dark ? ' cadmin-dark' : '');

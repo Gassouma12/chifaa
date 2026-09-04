@@ -1,5 +1,18 @@
 ﻿// About Page JavaScript - Load from JSON
 
+// Turn a stored social URL into a working absolute href. A scheme-less value
+// like "facebook.com/x" would otherwise resolve relative to /about.html and
+// 404. Keep in sync with normalizeSocialUrl (admin) and socialHref (about page).
+function normalizeSocialUrl(link) {
+    var u = String((link && link.url) || '').trim();
+    if (!u) return '#';
+    var isEmail = (link && link.class === 'email') || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u);
+    if (isEmail) return u.indexOf('mailto:') === 0 ? u : 'mailto:' + u;
+    if (/^(https?:|mailto:|tel:)/i.test(u)) return u;
+    if (u.indexOf('//') === 0) return 'https:' + u;
+    return 'https://' + u.replace(/^\/+/, '');
+}
+
 // Load about content
 async function loadAboutContent() {
     try {
@@ -30,13 +43,13 @@ async function loadAboutContent() {
         if (socialButtonsRow) {
             socialButtonsRow.innerHTML = '';
 
-            aboutData.socialLinks.forEach(link => {
+            (aboutData.socialLinks || []).forEach(link => {
                 const a = document.createElement('a');
-                a.href = link.url;
-                a.className = `social-pill ${link.class}`;
+                a.href = normalizeSocialUrl(link);
+                a.className = `social-pill ${link.class || ''}`;
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
-                a.innerHTML = `<i class="${link.icon}"></i> ${link.name}`;
+                a.innerHTML = `<i class="${link.icon || ''}"></i> ${link.name || ''}`;
                 socialButtonsRow.appendChild(a);
             });
         }

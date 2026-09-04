@@ -110,7 +110,13 @@ export function PagesEditor({ onToast }) {
   const save = async (key, langs) => {
     setSaving(true);
     try {
-      const rows = langs.map((l) => ({ key, lang: l, data: get(key, l) }));
+      const rows = langs.map((l) => {
+        const d = get(key, l);
+        // Normalise social URLs (add https://, drop blanks) so saved links always work.
+        const data = key === 'about' && Array.isArray(d.socialLinks)
+          ? { ...d, socialLinks: cleanSocialLinks(d.socialLinks) } : d;
+        return { key, lang: l, data };
+      });
       const { error } = await supabase.from('site_content').upsert(rows, { onConflict: 'key,lang' });
       if (error) throw error;
       onToast('Saved.', 'ok');
@@ -166,11 +172,74 @@ export function PagesEditor({ onToast }) {
   );
 }
 
+/* ---- Social links: pick a platform, paste a URL; icon + colour auto-set ---- */
+// Icons are Font Awesome 5 Brands/Solid classes (the About page loads FA 5.15).
+// `class` matches the brand-colour hover rules in public/css/about.css.
+const SOCIAL_PLATFORMS = [
+  { id: 'facebook', name: 'Facebook', icon: 'fab fa-facebook-f', class: 'facebook', ph: 'https://facebook.com/yourpage' },
+  { id: 'instagram', name: 'Instagram', icon: 'fab fa-instagram', class: 'instagram', ph: 'https://instagram.com/yourhandle' },
+  { id: 'linkedin', name: 'LinkedIn', icon: 'fab fa-linkedin-in', class: 'linkedin', ph: 'https://linkedin.com/company/yourorg' },
+  { id: 'twitter', name: 'X (Twitter)', icon: 'fab fa-twitter', class: 'twitter', ph: 'https://x.com/yourhandle' },
+  { id: 'youtube', name: 'YouTube', icon: 'fab fa-youtube', class: 'youtube', ph: 'https://youtube.com/@yourchannel' },
+  { id: 'tiktok', name: 'TikTok', icon: 'fab fa-tiktok', class: 'tiktok', ph: 'https://tiktok.com/@yourhandle' },
+  { id: 'whatsapp', name: 'WhatsApp', icon: 'fab fa-whatsapp', class: 'whatsapp', ph: 'https://wa.me/21600000000' },
+  { id: 'telegram', name: 'Telegram', icon: 'fab fa-telegram-plane', class: 'telegram', ph: 'https://t.me/yourchannel' },
+  { id: 'email', name: 'Email', icon: 'fas fa-envelope', class: 'email', ph: 'you@example.com' },
+  { id: 'website', name: 'Website', icon: 'fas fa-globe', class: 'website', ph: 'https://example.com' },
+  { id: 'custom', name: 'Other', icon: 'fas fa-link', class: 'custom', ph: 'https://…' },
+];
+const PLATFORM_BY_CLASS = Object.fromEntries(SOCIAL_PLATFORMS.map((p) => [p.class, p]));
+const DEFAULT_NAMES = new Set(SOCIAL_PLATFORMS.map((p) => p.name));
+
+// Turn whatever the user typed into a working absolute href. A bare
+// "facebook.com/x" (no scheme) would otherwise render as a relative link and
+// 404 — this is the core "links don't work" fix.
+export function normalizeSocialUrl(url, platformId) {
+  const u = String(url || '').trim();
+  if (!u) return '';
+  const looksEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u);
+  if (platformId === 'email' || looksEmail) return u.startsWith('mailto:') ? u : 'mailto:' + u;
+  if (/^(https?:|mailto:|tel:)/i.test(u)) return u;
+  if (u.startsWith('//')) return 'https:' + u;
+  return 'https://' + u.replace(/^\/+/, '');
+}
+
+// Best-guess the platform for an already-stored link (by css class, then icon).
+function platformOf(link) {
+  return PLATFORM_BY_CLASS[link?.class]
+    || SOCIAL_PLATFORMS.find((p) => p.icon === link?.icon)
+    || SOCIAL_PLATFORMS.find((p) => p.id === 'custom');
+}
+
+// Strip blank rows and normalise every URL before it hits the database.
+function cleanSocialLinks(list) {
+  return (Array.isArray(list) ? list : [])
+    .filter((s) => String(s.url || '').trim() || String(s.name || '').trim())
+    .map((s) => {
+      const pid = s.platform || platformOf(s).id;
+      return { name: s.name || '', url: normalizeSocialUrl(s.url, pid), icon: s.icon || '', class: s.class || '', platform: pid };
+    });
+}
+
 function AboutFields({ d, dir, onField }) {
   const paras = d.paragraphs || [];
   const socials = d.socialLinks || [];
   const setPara = (i, v) => onField('paragraphs', paras.map((p, j) => (j === i ? v : p)));
-  const setSocial = (i, k, v) => onField('socialLinks', socials.map((s, j) => (j === i ? { ...s, [k]: v } : s)));
+  const setSocials = (next) => onField('socialLinks', next);
+  const patch = (i, obj) => setSocials(socials.map((s, j) => (j === i ? { ...s, ...obj } : s)));
+
+  const choosePlatform = (i, id) => {
+    const p = SOCIAL_PLATFORMS.find((x) => x.id === id) || SOCIAL_PLATFORMS[SOCIAL_PLATFORMS.length - 1];
+    const cur = socials[i] || {};
+    // Auto-set icon + colour. Only replace the label if it's still a default
+    // (so a hand-written / Arabic label is never clobbered).
+    const keepName = cur.name && !DEFAULT_NAMES.has(cur.name);
+    patch(i, {
+      platform: p.id, icon: p.icon, class: p.class,
+      name: keepName ? cur.name : (p.id === 'custom' ? '' : p.name),
+    });
+  };
+
   return (<>
     <div className="field"><label>Title</label><input dir={dir} value={d.title || ''} onChange={(e) => onField('title', e.target.value)} /></div>
     <div className="section-label">Paragraphs</div>
@@ -181,18 +250,41 @@ function AboutFields({ d, dir, onField }) {
       </div>
     ))}
     <button className="btn btn-ghost btn-sm" onClick={() => onField('paragraphs', [...paras, ''])}>+ Add paragraph</button>
+
     <div className="section-label">Social links</div>
-    {socials.map((s, i) => (
-      <div className="grid-2" key={i} style={{ marginBottom: 10 }}>
-        <input placeholder="Name" value={s.name || ''} onChange={(e) => setSocial(i, 'name', e.target.value)} />
-        <div style={{ display: 'flex', gap: 8 }}>
-          <input placeholder="URL" value={s.url || ''} onChange={(e) => setSocial(i, 'url', e.target.value)} />
-          <button className="btn btn-danger btn-sm" onClick={() => onField('socialLinks', socials.filter((_, j) => j !== i))}>✕</button>
+    <p className="hint" style={{ marginTop: -6, marginBottom: 14 }}>
+      Pick a platform and paste the full profile link (e.g. <code>https://instagram.com/chifaatn</code>). The icon and colour are set for you — no https:// needed, it&apos;s added automatically.
+    </p>
+    {socials.map((s, i) => {
+      const pid = s.platform || platformOf(s).id;
+      const p = SOCIAL_PLATFORMS.find((x) => x.id === pid) || SOCIAL_PLATFORMS[SOCIAL_PLATFORMS.length - 1];
+      const href = normalizeSocialUrl(s.url, pid);
+      return (
+        <div className="social-editor" key={i}>
+          <div className="social-editor-main">
+            <select className="social-platform" value={pid} onChange={(e) => choosePlatform(i, e.target.value)} aria-label="Platform">
+              {SOCIAL_PLATFORMS.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
+            </select>
+            <input className="social-url" type="text" inputMode="url" placeholder={p.ph}
+              value={s.url || ''} onChange={(e) => patch(i, { url: e.target.value })} />
+            <button className="btn btn-danger btn-sm" title="Remove link" onClick={() => setSocials(socials.filter((_, j) => j !== i))}>✕</button>
+          </div>
+          <div className="social-editor-extra">
+            <label className="social-sub">Label
+              <input dir={dir} placeholder="Shown on the button" value={s.name || ''} onChange={(e) => patch(i, { name: e.target.value })} />
+            </label>
+            {pid === 'custom' && (
+              <label className="social-sub">Icon (Font Awesome)
+                <input placeholder="e.g. fab fa-medium" value={s.icon || ''} onChange={(e) => patch(i, { icon: e.target.value })} />
+              </label>
+            )}
+            <span className={'social-preview social-pill ' + (p.class || '')} title={href || 'No link yet'}>
+              <i className={s.icon || p.icon} aria-hidden="true" /> {s.name || p.name || 'Untitled'}
+            </span>
+          </div>
         </div>
-        <input placeholder="Icon class" value={s.icon || ''} onChange={(e) => setSocial(i, 'icon', e.target.value)} />
-        <input placeholder="CSS class" value={s.class || ''} onChange={(e) => setSocial(i, 'class', e.target.value)} />
-      </div>
-    ))}
-    <button className="btn btn-ghost btn-sm" onClick={() => onField('socialLinks', [...socials, { name: '', url: '', icon: '', class: '' }])}>+ Add link</button>
+      );
+    })}
+    <button className="btn btn-ghost btn-sm" onClick={() => setSocials([...socials, { platform: 'facebook', name: 'Facebook', url: '', icon: 'fab fa-facebook-f', class: 'facebook' }])}>+ Add link</button>
   </>);
 }

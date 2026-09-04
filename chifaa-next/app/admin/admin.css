@@ -95,6 +95,24 @@
 .err-text { color: var(--danger); font-size: 12.5px; margin-top: 6px; font-weight: 500; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+/* --- Social links editor (About page) --- */
+.social-editor { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r-sm);
+  padding: 14px; margin-bottom: 12px; animation: fadeUp .3s var(--ease); }
+.social-editor-main { display: flex; gap: 10px; align-items: center; }
+.social-editor-main .social-platform { flex: 0 0 150px; max-width: 150px; }
+.social-editor-main .social-url { flex: 1 1 auto; }
+.social-editor-main .btn { flex: 0 0 auto; }
+.social-editor-extra { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-top: 12px; }
+.social-sub { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); flex: 1 1 200px; }
+.social-sub input { font-weight: 500; color: var(--ink); }
+.social-preview { display: inline-flex; align-items: center; gap: 9px; pointer-events: none;
+  height: 40px; padding: 0 20px; border-radius: 9999px; font-size: 14px; font-weight: 600;
+  border: 1.5px solid var(--rose-soft); color: var(--ink); background: var(--rose-tint); box-shadow: none;
+  white-space: nowrap; align-self: center; flex: 0 0 auto; }
+.social-preview i { min-width: 16px; text-align: center; color: var(--rose-deep); }
+.social-editor .hint code, .field .hint code { background: var(--rose-tint); color: var(--rose-deep);
+  padding: 1px 5px; border-radius: 5px; font-size: 12px; }
+
 .checks { display: flex; flex-wrap: wrap; gap: 9px; }
 .checks label { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border: 1.5px solid var(--line);
   padding: 8px 14px; border-radius: var(--pill); font-weight: 500; font-size: 13px; cursor: pointer; margin: 0;

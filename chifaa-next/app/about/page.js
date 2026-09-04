@@ -20,6 +20,19 @@ const SCRIPTS = [
 // Mirrors the subheader detection in about.js
 const SUBHEADERS = ["The Gap We're Closing", 'The Reality in North Africa', 'How It Works'];
 
+// Turn a stored social URL into a working absolute href. A scheme-less value
+// like "facebook.com/x" would otherwise resolve relative to /about.html and
+// 404 — keep this in sync with normalizeSocialUrl in admin/Editors.js and about.js.
+function socialHref(link) {
+  const u = String(link?.url || '').trim();
+  if (!u) return '#';
+  const isEmail = link?.class === 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u);
+  if (isEmail) return u.startsWith('mailto:') ? u : 'mailto:' + u;
+  if (/^(https?:|mailto:|tel:)/i.test(u)) return u;
+  if (u.startsWith('//')) return 'https:' + u;
+  return 'https://' + u.replace(/^\/+/, '');
+}
+
 export default function AboutPage() {
   const about = readData('about');
 
@@ -41,8 +54,8 @@ export default function AboutPage() {
         </div>
 
         <div className="social-buttons-row">
-          {about.socialLinks.map((link) => (
-            <a key={link.name} href={link.url} className={`social-pill ${link.class}`} target="_blank" rel="noopener noreferrer">
+          {(about.socialLinks || []).map((link, i) => (
+            <a key={link.name || i} href={socialHref(link)} className={`social-pill ${link.class || ''}`} target="_blank" rel="noopener noreferrer">
               <i className={link.icon}></i> {link.name}
             </a>
           ))}
